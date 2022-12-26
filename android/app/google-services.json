@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "492032877063",
+    "project_id": "colorviu-b2244",
+    "storage_bucket": "colorviu-b2244.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492032877063:android:c4348943d6e472ad9cc0a2",
+        "android_client_info": {
+          "package_name": "com.colorviu.colorviu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492032877063-9lgp7eah89t9lqtuv5d97kl3u92s8jpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtkwvk1CFp2nR4R8pYk3Pj5wZ2JVl77x0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492032877063-9lgp7eah89t9lqtuv5d97kl3u92s8jpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492032877063:android:4a1757c84607a7ab9cc0a2",
+        "android_client_info": {
+          "package_name": "com.example.colorviu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492032877063-9lgp7eah89t9lqtuv5d97kl3u92s8jpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtkwvk1CFp2nR4R8pYk3Pj5wZ2JVl77x0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492032877063-9lgp7eah89t9lqtuv5d97kl3u92s8jpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
