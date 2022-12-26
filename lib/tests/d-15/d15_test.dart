@@ -16,6 +16,7 @@ class d15 extends StatefulWidget {
 }
 
 class _d15State extends State<d15> {
+  List keys = [];
   List colors = [];
 
   Map<int, String> color = {
@@ -38,7 +39,7 @@ class _d15State extends State<d15> {
     16: 'assets/#7567A3.png'
   };
 
-  // List<Color> colors = [
+  // List<Color> keys = [
   //   Color(id: 0, color: 'assets/#3781C1.png'),
   //   Color(id: 1, color: 'assets/#3583B4.png'),
   //   Color(id: 2, color: 'assets/#3B84A7.png'),
@@ -72,8 +73,13 @@ class _d15State extends State<d15> {
   //   print(allData);
   // }
 
+  void keyList() {
+    keys = color.keys.toList();
+    colors = color.values.toList();
+  }
+
   void submit() {
-    print(color[0]);
+    print(keys);
   }
 
   int variableSet = 0;
@@ -84,7 +90,7 @@ class _d15State extends State<d15> {
   @override
   void initState() {
     super.initState();
-    //getData();
+    keyList();
   }
 
   final AuthService _auth = AuthService();
@@ -131,7 +137,7 @@ class _d15State extends State<d15> {
                 }
                 return GridTile(
                   child: Image(
-                    image: AssetImage(color[index].toString()),
+                    image: AssetImage(colors[index].toString()),
                     fit: BoxFit.cover,
                     height: 50,
                     width: 50,
@@ -142,16 +148,18 @@ class _d15State extends State<d15> {
           ),
           itemCount: color.length,
           onWillAccept: (oldIndex, newIndex) {
-            if (colors[newIndex] == "something") {
+            if (keys[newIndex] == "something") {
               return false;
             }
             return true;
           },
           onReorder: (oldIndex, newIndex) {
-            final temp = colors[oldIndex];
-            colors[oldIndex] = colors[newIndex];
-            colors[newIndex] = temp;
-            setState(() {});
+            final temp = keys[oldIndex];
+            keys[oldIndex] = keys[newIndex];
+            keys[newIndex] = temp;
+            setState(() {
+              print(keys[newIndex]);
+            });
           },
         ),
         floatingActionButton: Padding(
