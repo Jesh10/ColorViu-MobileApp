@@ -23,6 +23,19 @@ class _d15State extends State<d15> {
     1: 'assets/#3583B4.png',
     2: 'assets/#3B84A7.png',
     3: 'assets/#39859C.png',
+    4: 'assets/#3B8690.png',
+    5: 'assets/#3F8782.png',
+    6: 'assets/#588473.png',
+    7: 'assets/#6C8164.png',
+    8: 'assets/#837B5D.png',
+    9: 'assets/#907660.png',
+    10: 'assets/#9E6E6F.png',
+    11: 'assets/#9F6D7C.png',
+    12: 'assets/#9C6D89.png',
+    13: 'assets/#927099.png',
+    14: 'assets/#8F6FA4.png',
+    15: 'assets/#8073B2.png',
+    16: 'assets/#7567A3.png'
   };
 
   // List<Color> colors = [
@@ -45,8 +58,8 @@ class _d15State extends State<d15> {
   //   Color(id: 16, color: 'assets/#7567A3.png'),
   // ]..shuffle();
 
-  final CollectionReference questionsCollection =
-      FirebaseFirestore.instance.collection('questions');
+  // final CollectionReference questionsCollection =
+  //   FirebaseFirestore.instance.collection('questions');
 
   // void getData() async {
   //   // Get docs from collection reference
