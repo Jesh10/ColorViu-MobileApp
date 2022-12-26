@@ -16,43 +16,51 @@ class d15 extends StatefulWidget {
 }
 
 class _d15State extends State<d15> {
-  List color = [];
+  List colors = [];
 
-  List<Color> colors = [
-    Color(id: 0, color: 'assets/#3781C1.png'),
-    Color(id: 1, color: 'assets/#3583B4.png'),
-    Color(id: 2, color: 'assets/#3B84A7.png'),
-    Color(id: 3, color: 'assets/#39859C.png'),
-    Color(id: 4, color: 'assets/#3B8690.png'),
-    Color(id: 5, color: 'assets/#3F8782.png'),
-    Color(id: 6, color: 'assets/#588473.png'),
-    Color(id: 7, color: 'assets/#6C8164.png'),
-    Color(id: 8, color: 'assets/#837B5D.png'),
-    Color(id: 9, color: 'assets/#907660.png'),
-    Color(id: 10, color: 'assets/#9E6E6F.png'),
-    Color(id: 11, color: 'assets/#9F6D7C.png'),
-    Color(id: 12, color: 'assets/#9C6D89.png'),
-    Color(id: 13, color: 'assets/#927099.png'),
-    Color(id: 14, color: 'assets/#8F6FA4.png'),
-    Color(id: 15, color: 'assets/#8073B2.png'),
-    Color(id: 16, color: 'assets/#7567A3.png'),
-  ]..shuffle();
+  Map<int, String> color = {
+    0: 'assets/#3781C1.png',
+    1: 'assets/#3583B4.png',
+    2: 'assets/#3B84A7.png',
+    3: 'assets/#39859C.png',
+  };
+
+  // List<Color> colors = [
+  //   Color(id: 0, color: 'assets/#3781C1.png'),
+  //   Color(id: 1, color: 'assets/#3583B4.png'),
+  //   Color(id: 2, color: 'assets/#3B84A7.png'),
+  //   Color(id: 3, color: 'assets/#39859C.png'),
+  //   Color(id: 4, color: 'assets/#3B8690.png'),
+  //   Color(id: 5, color: 'assets/#3F8782.png'),
+  //   Color(id: 6, color: 'assets/#588473.png'),
+  //   Color(id: 7, color: 'assets/#6C8164.png'),
+  //   Color(id: 8, color: 'assets/#837B5D.png'),
+  //   Color(id: 9, color: 'assets/#907660.png'),
+  //   Color(id: 10, color: 'assets/#9E6E6F.png'),
+  //   Color(id: 11, color: 'assets/#9F6D7C.png'),
+  //   Color(id: 12, color: 'assets/#9C6D89.png'),
+  //   Color(id: 13, color: 'assets/#927099.png'),
+  //   Color(id: 14, color: 'assets/#8F6FA4.png'),
+  //   Color(id: 15, color: 'assets/#8073B2.png'),
+  //   Color(id: 16, color: 'assets/#7567A3.png'),
+  // ]..shuffle();
 
   final CollectionReference questionsCollection =
       FirebaseFirestore.instance.collection('questions');
 
-  void getData() async {
-    // Get docs from collection reference
-    QuerySnapshot querySnapshot = await questionsCollection.get();
+  // void getData() async {
+  //   // Get docs from collection reference
+  //   QuerySnapshot querySnapshot = await questionsCollection.get();
 
-    // Get data from docs and convert map to List
-    final allData = querySnapshot.docs.map((doc) => doc.data()).toList()..shuffle();
+  //   // Get data from docs and convert map to List
+  //   final allData = querySnapshot.docs.map((doc) => doc.data()).toList()
+  //     ..shuffle();
 
-    print(allData);
-  }
+  //   print(allData);
+  // }
 
   void submit() {
-    colors.forEach(print);
+    print(color[0]);
   }
 
   int variableSet = 0;
@@ -63,7 +71,7 @@ class _d15State extends State<d15> {
   @override
   void initState() {
     super.initState();
-    getData();
+    //getData();
   }
 
   final AuthService _auth = AuthService();
@@ -110,7 +118,7 @@ class _d15State extends State<d15> {
                 }
                 return GridTile(
                   child: Image(
-                    image: AssetImage(colors[index].color),
+                    image: AssetImage(color[index].toString()),
                     fit: BoxFit.cover,
                     height: 50,
                     width: 50,
@@ -119,7 +127,7 @@ class _d15State extends State<d15> {
               },
             ),
           ),
-          itemCount: colors.length,
+          itemCount: color.length,
           onWillAccept: (oldIndex, newIndex) {
             if (colors[newIndex] == "something") {
               return false;
@@ -136,7 +144,7 @@ class _d15State extends State<d15> {
         floatingActionButton: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 45),
           child: Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.centerLeft,
             heightFactor: 3.5,
             child: SizedBox(
               width: 60,
