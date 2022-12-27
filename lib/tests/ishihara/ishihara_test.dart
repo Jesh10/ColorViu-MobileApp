@@ -130,7 +130,8 @@ class _IshiharaState extends State<Ishihara> {
                 onPressed: () => startOver(),
                 deficiency: deficiency,
                 statement: statement,
-              ));
+          )
+      );
     } else {
       if (isPressed == true) {
         setState(() {
@@ -313,13 +314,6 @@ class _IshiharaState extends State<Ishihara> {
           ),
         ]),
       )),
-      // floatingActionButton: Padding(
-      //   padding: const EdgeInsets.symmetric(horizontal: 10),
-      //   child: NextButton(
-      //     nextQuestion: ,
-      //   ),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

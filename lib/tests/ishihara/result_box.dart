@@ -19,17 +19,17 @@ class ResultBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.blue,
       content: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               Text(
                 deficiency,
-                style: const TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
@@ -37,13 +37,13 @@ class ResultBox extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 35),
                 child: Text(
                   statement,
-                  style: const TextStyle(color: Colors.white, fontSize: 21),
+                  style: const TextStyle(color: Colors.white, fontSize: 30),
                   textAlign: TextAlign.center,
                 ),
               ),
               const SizedBox(height: 25),
               CircleAvatar(
-                radius: 70,
+                radius: 80,
                 backgroundColor: result == questionLength / 2
                     ? Colors.yellow
                     : result < questionLength - 5
@@ -51,17 +51,29 @@ class ResultBox extends StatelessWidget {
                         : Colors.green,
                 child: Text(
                   '$result/$questionLength',
-                  style: const TextStyle(fontSize: 30, color: Colors.white),
+                  style: const TextStyle(fontSize: 35, color: Colors.white),
                 ),
               ),
               const SizedBox(height: 35),
-              GestureDetector(
+              Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 2
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(15))
+                ),
+                child: GestureDetector(
                   onTap: onPressed,
                   child: const Text(
-                    'Start Over',
+                    'Try Again?',
                     style: TextStyle(
-                        color: Colors.white, fontSize: 35, letterSpacing: 1),
-                  )),
+                        color: Colors.blue, fontSize: 35, letterSpacing: 1),
+                  )
+                ),
+              ),
               const SizedBox(height: 10),
             ]),
       ),
