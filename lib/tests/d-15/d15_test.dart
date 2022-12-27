@@ -2,12 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:colorviu/models/user.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
-import 'package:colorviu/tests/d-15/d15_result.dart';
 import 'package:colorviu/tests/d-15/submit_button.dart';
 import 'package:drag_and_drop_gridview/devdrag.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+final AuthService _auth = AuthService();
+List index = [];
 class d15 extends StatefulWidget {
   const d15({super.key});
 
@@ -18,7 +19,6 @@ class d15 extends StatefulWidget {
 class _d15State extends State<d15> {
   List colorsOld = [];
   List colorsShuffle = [];
-  List index = [];
 
   Map<int, String> colorsList = {
     0: 'assets/#3781C1.png',
@@ -36,12 +36,11 @@ class _d15State extends State<d15> {
     12: 'assets/#9C6D89.png',
     13: 'assets/#927099.png',
     14: 'assets/#8F6FA4.png',
-    15: 'assets/#8073B2.png',
-    16: 'assets/#7567A3.png'
+    // 15: 'assets/#8073B2.png',
+    // 16: 'assets/#7567A3.png'
   };
 
   void keyList() {
- 
     colorsOld = colorsList.values.toList();
     colorsShuffle = colorsList.values.toList();
 
@@ -49,7 +48,6 @@ class _d15State extends State<d15> {
   }
 
   void submit() {
-
     for (var i = 0; i < colorsList.length; i++) {
       var key = colorsList.keys
           .firstWhere((element) => colorsList[element] == colorsShuffle[i]);
@@ -57,6 +55,11 @@ class _d15State extends State<d15> {
     }
 
     print(index);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const d15Result()),
+    );
   }
 
   int variableSet = 0;
@@ -69,8 +72,6 @@ class _d15State extends State<d15> {
     super.initState();
     keyList();
   }
-
-  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +103,7 @@ class _d15State extends State<d15> {
             crossAxisCount: 1,
             childAspectRatio: 4 / 4,
           ),
-          padding: const EdgeInsets.fromLTRB(192, 10, 160, 0),
+          padding: const EdgeInsets.fromLTRB(187, 15, 160, 0),
           itemBuilder: (context, index) => Card(
             elevation: 2,
             child: LayoutBuilder(
@@ -139,20 +140,52 @@ class _d15State extends State<d15> {
           },
         ),
         floatingActionButton: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 45),
+          padding: const EdgeInsets.symmetric(horizontal: 50),
           child: Align(
             alignment: Alignment.centerLeft,
-            heightFactor: 3.5,
+            heightFactor: 3.62,
             child: SizedBox(
-              width: 60,
+              width: 70,
               height: 200,
               child: FloatingActionButton(
-                onPressed: null, child: SubmitButton(submit: submit)),
+                  onPressed: () {}, child: SubmitButton(submit: submit)),
             ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
+    );
+  }
+}
+
+class d15Result extends StatelessWidget {
+  const d15Result({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamProvider<List<ColorUser>?>.value(
+      value: DatabaseService(uid: '').users,
+      initialData: null,
+      child: Scaffold(
+        backgroundColor: Colors.brown[50],
+        appBar: AppBar(
+          title: const Text('Color Deficiency Test '),
+          backgroundColor: Colors.brown[400],
+          elevation: 0,
+          actions: [
+            ElevatedButton.icon(
+                icon: const Icon(Icons.person),
+                label: const Text('logout'),
+                onPressed: () async {
+                  await _auth.signOut();
+                }),
+            // TextButton.icon(
+            //   onPressed: () => _showSettingsPanel(),
+            //   icon: Icon(Icons.settings),
+            //   label: Text('settings'))
+          ],
+        ),
+      )
     );
   }
 }
