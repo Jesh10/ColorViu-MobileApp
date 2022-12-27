@@ -56,7 +56,7 @@ class CDT extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => d15()),
+                    MaterialPageRoute(builder: (context) => const d15()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
