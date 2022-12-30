@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 final AuthService _auth = AuthService();
-List index = [];
+List indexList = [];
+List entriesX = [];
+List entriesY = [];
 
 class d15 extends StatefulWidget {
   const d15({super.key});
@@ -54,10 +56,8 @@ class _d15State extends State<d15> {
     for (var i = 0; i < colorsList.length; i++) {
       var key = colorsList.keys
           .firstWhere((element) => colorsList[element] == colorsShuffle[i]);
-      index.add(key);
+      indexList.add(key);
     }
-
-    print(index);
 
     Navigator.push(
       context,
@@ -164,10 +164,6 @@ class _d15State extends State<d15> {
 class d15Result extends StatelessWidget {
   const d15Result({super.key});
 
-  void save() {
-    print(index);
-  }
-
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<ColorUser>?>.value(
@@ -226,7 +222,8 @@ class d15Result extends StatelessWidget {
                           width: 250,
                           height: 70,
                           child: FloatingActionButton(
-                              onPressed: () {}, child: SaveButton(save: save)),
+                              onPressed: () {},
+                              child: const SaveButton(save: save)),
                         ),
                       ),
                     ),
@@ -237,27 +234,42 @@ class d15Result extends StatelessWidget {
   }
 }
 
-class ShapesPainter extends CustomPainter {
-  List<Coordinates> coordinates = [
-    //Coordinates(id: 0, x: 80, y: 300),
-    Coordinates(id: 1, x: 25, y: 170),
-    Coordinates(id: 2, x: 40, y: 100),
-    Coordinates(id: 3, x: 80, y: 50),
-    Coordinates(id: 4, x: 150, y: 20),
-    Coordinates(id: 5, x: 235, y: 20),
-    Coordinates(id: 6, x: 300, y: 60),
-    Coordinates(id: 7, x: 335, y: 120),
-    Coordinates(id: 8, x: 350, y: 180),
-    Coordinates(id: 9, x: 335, y: 250),
-    Coordinates(id: 10, x: 300, y: 320),
-    Coordinates(id: 11, x: 235, y: 360),
-    Coordinates(id: 12, x: 150, y: 360),
-    Coordinates(id: 13, x: 80, y: 330),
-    Coordinates(id: 14, x: 40, y: 280),
-    Coordinates(id: 15, x: 25, y: 210),
-    //Coordinates(id: 16, x: 100, y: 409)
-  ];
+List<Coordinates> coordinates = [
+  //Coordinates(id: 0, x: 80, y: 300),
+  Coordinates(id: 1, x: 25, y: 170),
+  Coordinates(id: 2, x: 40, y: 100),
+  Coordinates(id: 3, x: 80, y: 50),
+  Coordinates(id: 4, x: 150, y: 20),
+  Coordinates(id: 5, x: 235, y: 20),
+  Coordinates(id: 6, x: 300, y: 60),
+  Coordinates(id: 7, x: 335, y: 120),
+  Coordinates(id: 8, x: 350, y: 180),
+  Coordinates(id: 9, x: 335, y: 250),
+  Coordinates(id: 10, x: 300, y: 320),
+  Coordinates(id: 11, x: 235, y: 360),
+  Coordinates(id: 12, x: 150, y: 360),
+  Coordinates(id: 13, x: 80, y: 330),
+  Coordinates(id: 14, x: 40, y: 280),
+  Coordinates(id: 15, x: 25, y: 210),
+  //Coordinates(id: 16, x: 100, y: 409)
+];
 
+void compare() {
+
+  for (int i = 0; i < 15; i++) {
+    entriesX.add(coordinates[indexList[i]].x);
+  }
+  
+  print(entriesX);
+  //print(entriesY);
+}
+
+void save() {
+  print(indexList);
+  compare();
+}
+
+class ShapesPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
@@ -265,14 +277,14 @@ class ShapesPainter extends CustomPainter {
       ..strokeWidth = 2
       ..color = Colors.black;
 
-    void connect() {
-      for (var i = 0; i < coordinates.length-1; i++) {
-        canvas.drawLine(Offset(coordinates[i].x, coordinates[i].y),
-            Offset(coordinates[i + 1].x, coordinates[i + 1].y), paint);
-      }
-    }
-    connect();
+    // void connect() {
+    //   for (var i = 0; i < 15 - 1; i++) {
+    //     canvas.drawLine(Offset(entriesX[i], entriesY[i]),
+    //         Offset(entriesX[i + 1], entriesY[i + 1]), paint);
+    //   }
+    // }
 
+    // connect();
   }
 
   @override
