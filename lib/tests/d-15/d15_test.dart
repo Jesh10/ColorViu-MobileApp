@@ -240,21 +240,21 @@ class d15Result extends StatelessWidget {
 class ShapesPainter extends CustomPainter {
   List<Coordinates> coordinates = [
     //Coordinates(id: 0, x: 80, y: 300),
-    Coordinates(id: 1, x: 15, y: 170),
-    Coordinates(id: 2, x: 30, y: 110),
+    Coordinates(id: 1, x: 25, y: 170),
+    Coordinates(id: 2, x: 40, y: 100),
     Coordinates(id: 3, x: 80, y: 50),
     Coordinates(id: 4, x: 150, y: 20),
-    Coordinates(id: 5, x: 230, y: 20),
-    Coordinates(id: 6, x: 300, y: 50),
-    Coordinates(id: 7, x: 355, y: 110),
-    Coordinates(id: 8, x: 375, y: 180),
-    Coordinates(id: 9, x: 355, y: 260),
-    Coordinates(id: 10, x: 310, y: 330),
-    Coordinates(id: 11, x: 240, y: 360),
+    Coordinates(id: 5, x: 235, y: 20),
+    Coordinates(id: 6, x: 300, y: 60),
+    Coordinates(id: 7, x: 335, y: 120),
+    Coordinates(id: 8, x: 350, y: 180),
+    Coordinates(id: 9, x: 335, y: 250),
+    Coordinates(id: 10, x: 300, y: 320),
+    Coordinates(id: 11, x: 235, y: 360),
     Coordinates(id: 12, x: 150, y: 360),
     Coordinates(id: 13, x: 80, y: 330),
-    Coordinates(id: 14, x: 30, y: 270),
-    Coordinates(id: 15, x: 15, y: 210),
+    Coordinates(id: 14, x: 40, y: 280),
+    Coordinates(id: 15, x: 25, y: 210),
     //Coordinates(id: 16, x: 100, y: 409)
   ];
 
@@ -271,8 +271,8 @@ class ShapesPainter extends CustomPainter {
             Offset(coordinates[i + 1].x, coordinates[i + 1].y), paint);
       }
     }
-
     connect();
+
   }
 
   @override
