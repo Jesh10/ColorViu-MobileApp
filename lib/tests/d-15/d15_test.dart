@@ -26,7 +26,7 @@ class _d15State extends State<d15> {
   List colorsShuffle = [];
 
   Map<int, String> colorsList = {
-    //0: 'assets/#3781C1.png',
+    0: 'assets/#3781C1.png',
     1: 'assets/#3583B4.png',
     2: 'assets/#3B84A7.png',
     3: 'assets/#39859C.png',
@@ -41,7 +41,7 @@ class _d15State extends State<d15> {
     12: 'assets/#9C6D89.png',
     13: 'assets/#927099.png',
     14: 'assets/#8F6FA4.png',
-    15: 'assets/#8073B2.png',
+    //15: 'assets/#8073B2.png',
     // 16: 'assets/#7567A3.png'
   };
 
@@ -234,39 +234,8 @@ class d15Result extends StatelessWidget {
   }
 }
 
-List<Coordinates> coordinates = [
-  //Coordinates(id: 0, x: 80, y: 300),
-  Coordinates(id: 1, x: 25, y: 170),
-  Coordinates(id: 2, x: 40, y: 100),
-  Coordinates(id: 3, x: 80, y: 50),
-  Coordinates(id: 4, x: 150, y: 20),
-  Coordinates(id: 5, x: 235, y: 20),
-  Coordinates(id: 6, x: 300, y: 60),
-  Coordinates(id: 7, x: 335, y: 120),
-  Coordinates(id: 8, x: 350, y: 180),
-  Coordinates(id: 9, x: 335, y: 250),
-  Coordinates(id: 10, x: 300, y: 320),
-  Coordinates(id: 11, x: 235, y: 360),
-  Coordinates(id: 12, x: 150, y: 360),
-  Coordinates(id: 13, x: 80, y: 330),
-  Coordinates(id: 14, x: 40, y: 280),
-  Coordinates(id: 15, x: 25, y: 210),
-  //Coordinates(id: 16, x: 100, y: 409)
-];
-
-void compare() {
-
-  for (int i = 0; i < 15; i++) {
-    entriesX.add(coordinates[indexList[i]].x);
-  }
-  
-  print(entriesX);
-  //print(entriesY);
-}
-
 void save() {
   print(indexList);
-  compare();
 }
 
 class ShapesPainter extends CustomPainter {
@@ -277,14 +246,43 @@ class ShapesPainter extends CustomPainter {
       ..strokeWidth = 2
       ..color = Colors.black;
 
-    // void connect() {
-    //   for (var i = 0; i < 15 - 1; i++) {
-    //     canvas.drawLine(Offset(entriesX[i], entriesY[i]),
-    //         Offset(entriesX[i + 1], entriesY[i + 1]), paint);
-    //   }
-    // }
+    List<Coordinates> coordinates = [
+      //Coordinates(id: 0, x: 80, y: 300),
+      Coordinates(id: 1, x: 25, y: 170),
+      Coordinates(id: 2, x: 40, y: 100),
+      Coordinates(id: 3, x: 80, y: 50),
+      Coordinates(id: 4, x: 150, y: 20),
+      Coordinates(id: 5, x: 235, y: 20),
+      Coordinates(id: 6, x: 300, y: 60),
+      Coordinates(id: 7, x: 335, y: 120),
+      Coordinates(id: 8, x: 350, y: 180),
+      Coordinates(id: 9, x: 335, y: 250),
+      Coordinates(id: 10, x: 300, y: 320),
+      Coordinates(id: 11, x: 235, y: 360),
+      Coordinates(id: 12, x: 150, y: 360),
+      Coordinates(id: 13, x: 80, y: 330),
+      Coordinates(id: 14, x: 40, y: 280),
+      Coordinates(id: 15, x: 25, y: 210),
+      //Coordinates(id: 16, x: 100, y: 409)
+    ];
 
-    // connect();
+    void compare() {
+      for (int i = 0; i < 15; i++) {
+        entriesX.add(coordinates[indexList[i]].x);
+        entriesY.add(coordinates[indexList[i]].y);
+      }
+    }
+
+    compare();
+
+    void connect() {
+      for (var i = 0; i < 15 - 1; i++) {
+        canvas.drawLine(Offset(entriesX[i], entriesY[i]),
+            Offset(entriesX[i + 1], entriesY[i + 1]), paint);
+      }
+    }
+
+    connect();
   }
 
   @override
