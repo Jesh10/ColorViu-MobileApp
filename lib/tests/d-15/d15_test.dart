@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:colorviu/models/coordinates.dart';
 import 'package:colorviu/models/user.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
@@ -23,7 +24,7 @@ class _d15State extends State<d15> {
   List colorsShuffle = [];
 
   Map<int, String> colorsList = {
-    0: 'assets/#3781C1.png',
+    //0: 'assets/#3781C1.png',
     1: 'assets/#3583B4.png',
     2: 'assets/#3B84A7.png',
     3: 'assets/#39859C.png',
@@ -38,7 +39,7 @@ class _d15State extends State<d15> {
     12: 'assets/#9C6D89.png',
     13: 'assets/#927099.png',
     14: 'assets/#8F6FA4.png',
-    // 15: 'assets/#8073B2.png',
+    15: 'assets/#8073B2.png',
     // 16: 'assets/#7567A3.png'
   };
 
@@ -163,7 +164,7 @@ class _d15State extends State<d15> {
 class d15Result extends StatelessWidget {
   const d15Result({super.key});
 
-   void save() {
+  void save() {
     print(index);
   }
 
@@ -193,86 +194,85 @@ class d15Result extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const Text(
-                    'Trichromacy',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 50),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    'Normal Color Vision',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 23),
-                  ),
-                  const SizedBox(height: 30),
-                  CustomPaint(
-                    painter: ShapesPainter(),
-                    child: Container(
-                      height: 500,
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Trichromacy',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 50),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50),
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      widthFactor: 1.75,
-                      child: SizedBox(
-                        width: 150,
-                        height: 70,
-                        child: FloatingActionButton(
-                          onPressed: () {},
-                          child: SaveButton(save: save)
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Normal Color Vision',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 23),
+                    ),
+                    const SizedBox(height: 30),
+                    CustomPaint(
+                      painter: ShapesPainter(),
+                      child: Container(
+                        height: 400,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        widthFactor: 1.75,
+                        child: SizedBox(
+                          width: 250,
+                          height: 70,
+                          child: FloatingActionButton(
+                              onPressed: () {}, child: SaveButton(save: save)),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ),
+                  ],
+                )),
           ),
-        )
-      );
+        ));
   }
 }
 
 class ShapesPainter extends CustomPainter {
+  List<Coordinates> coordinates = [
+    //Coordinates(id: 0, x: 80, y: 300),
+    Coordinates(id: 1, x: 15, y: 170),
+    Coordinates(id: 2, x: 30, y: 110),
+    Coordinates(id: 3, x: 80, y: 50),
+    Coordinates(id: 4, x: 150, y: 20),
+    Coordinates(id: 5, x: 230, y: 20),
+    Coordinates(id: 6, x: 300, y: 50),
+    Coordinates(id: 7, x: 355, y: 110),
+    Coordinates(id: 8, x: 375, y: 180),
+    Coordinates(id: 9, x: 355, y: 260),
+    Coordinates(id: 10, x: 310, y: 330),
+    Coordinates(id: 11, x: 240, y: 360),
+    Coordinates(id: 12, x: 150, y: 360),
+    Coordinates(id: 13, x: 80, y: 330),
+    Coordinates(id: 14, x: 30, y: 270),
+    Coordinates(id: 15, x: 15, y: 210),
+    //Coordinates(id: 16, x: 100, y: 409)
+  ];
+
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint();
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2
+      ..color = Colors.black;
 
-    // set the paint color to be white
-    paint.color = Colors.white;
+    void connect() {
+      for (var i = 0; i < coordinates.length-1; i++) {
+        canvas.drawLine(Offset(coordinates[i].x, coordinates[i].y),
+            Offset(coordinates[i + 1].x, coordinates[i + 1].y), paint);
+      }
+    }
 
-    // Create a rectangle with size and width same as the canvas
-    var rect = Rect.fromLTWH(0, 0, size.width, size.height);
-
-    // draw the rectangle using the paint
-    canvas.drawRect(rect, paint);
-
-    paint.color = Colors.yellow;
-
-    // create a path
-    var path = Path();
-    path.lineTo(0, size.height);
-    path.lineTo(size.width, 0);
-    // close the path to form a bounded shape
-    path.close();
-
-    canvas.drawPath(path, paint);
-
-    // set the color property of the paint
-    paint.color = Colors.deepOrange;
-
-    // center of the canvas is (x,y) => (width/2, height/2)
-    var center = Offset(size.width / 2, size.height / 2);
-
-    // draw the circle with center having radius 75.0
-    canvas.drawCircle(center, 75.0, paint);
+    connect();
   }
 
   @override

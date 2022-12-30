@@ -8,7 +8,7 @@ class SaveButton extends StatelessWidget {
     return GestureDetector(
       onTap: save,
       child: Container(
-        width: 150,
+        width: 220,
         decoration: BoxDecoration(
             color: Colors.red, borderRadius: BorderRadius.circular(10)),
         padding: const EdgeInsets.symmetric(vertical: 12),
@@ -16,7 +16,7 @@ class SaveButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           margin: const EdgeInsets.all(10),
           child: const Text(
-            'Submit',
+            'Save Results',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 24),
           ),
