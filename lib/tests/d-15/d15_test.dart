@@ -49,8 +49,12 @@ class _D15State extends State<D15> {
   void keyList() {
     colorsOld = colorsList.values.toList();
     colorsShuffle = colorsList.values.toList();
+    colorsShuffle.remove('assets/#3781C1.png');
+    colorsShuffle.remove('assets/#8F6FA4.png');
 
     colorsShuffle.shuffle();
+    colorsShuffle.insert(0, 'assets/#3781C1.png');
+    colorsShuffle.insert(14, 'assets/#8F6FA4.png');
   }
 
   void submit() {
@@ -130,7 +134,8 @@ class _D15State extends State<D15> {
           ),
           itemCount: colorsList.length,
           onWillAccept: (oldIndex, newIndex) {
-            if (colorsOld[newIndex] == "something") {
+            if (colorsShuffle[oldIndex] == "assets/#3781C1.png" || colorsShuffle[newIndex] == "assets/#3781C1.png" 
+            || colorsShuffle[oldIndex] == "assets/#8F6FA4.png" || colorsShuffle[newIndex] == "assets/#8F6FA4.png") {
               return false;
             }
             return true;
@@ -208,14 +213,13 @@ class d15Result extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     Container(
-                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 2
-                          ),
-                          borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 2),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black, width: 2),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
                       ),
                       child: CustomPaint(
                         painter: ShapesPainter(),
@@ -224,21 +228,21 @@ class d15Result extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // const SizedBox(height: 50),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 50),
-                    //   child: Align(
-                    //     alignment: Alignment.bottomCenter,
-                    //     widthFactor: 1.75,
-                    //     child: SizedBox(
-                    //       width: 250,
-                    //       height: 70,
-                    //       child: FloatingActionButton(
-                    //           onPressed: () {},
-                    //           child: const SaveButton(save: save)),
-                    //     ),
-                    //   ),
-                    // ),
+                    const SizedBox(height: 30),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        widthFactor: 1.75,
+                        child: SizedBox(
+                          width: 250,
+                          height: 70,
+                          child: FloatingActionButton(
+                              onPressed: () {},
+                              child: const SaveButton(save: save)),
+                        ),
+                      ),
+                    ),
                   ],
                 )),
           ),
@@ -260,36 +264,36 @@ class ShapesPainter extends CustomPainter {
 
     final protan = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2
+      ..strokeWidth = 4
       ..color = Colors.red;
 
     final deutan = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2
+      ..strokeWidth = 4
       ..color = Colors.green;
 
     final tritan = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2
-      ..color = Colors.green;
+      ..strokeWidth = 4
+      ..color = Colors.blue;
 
     List<Pointers> pointers = [
       //Coordinates(id: 0, x: 80, y: 300),
-      Pointers(text: '1', x: 5, y: 165),
+      Pointers(text: '1', x: 2, y: 165),
       Pointers(text: '2', x: 15, y: 90),
-      Pointers(text: '3', x: 65, y: 30),
-      Pointers(text: '4', x: 140, y: 0),
-      Pointers(text: '5', x: 235, y: 0),
-      Pointers(text: '6', x: 305, y: 45),
-      Pointers(text: '7', x: 340, y: 110),
-      Pointers(text: '8', x: 355, y: 175),
+      Pointers(text: '3', x: 65, y: 25),
+      Pointers(text: '4', x: 140, y: -5),
+      Pointers(text: '5', x: 235, y: -5),
+      Pointers(text: '6', x: 310, y: 45),
+      Pointers(text: '7', x: 345, y: 110),
+      Pointers(text: '8', x: 357, y: 175),
       Pointers(text: '9', x: 345, y: 250),
-      Pointers(text: '10', x: 305, y: 325),
+      Pointers(text: '10', x: 307, y: 330),
       Pointers(text: '11', x: 230, y: 375),
-      Pointers(text: '12', x: 135, y: 375),
+      Pointers(text: '12', x: 135, y: 380),
       Pointers(text: '13', x: 60, y: 350),
-      Pointers(text: '14', x: 10, y: 280),
-      Pointers(text: '15', x: -2, y: 220),
+      Pointers(text: '14', x: 5, y: 285),
+      Pointers(text: '15', x: -2, y: 225),
       //Coordinates(id: 16, x: 100, y: 409)
     ];
 
@@ -302,7 +306,7 @@ class ShapesPainter extends CustomPainter {
       Coordinates(id: 5, x: 235, y: 30),
       Coordinates(id: 6, x: 300, y: 70),
       Coordinates(id: 7, x: 335, y: 130),
-      Coordinates(id: 8, x: 350, y: 190),
+      Coordinates(id: 8, x: 345, y: 190),
       Coordinates(id: 9, x: 335, y: 260),
       Coordinates(id: 10, x: 300, y: 330),
       Coordinates(id: 11, x: 235, y: 370),
@@ -313,7 +317,7 @@ class ShapesPainter extends CustomPainter {
       //Coordinates(id: 16, x: 100, y: 409)
     ];
 
-    for (var i = 0; i < pointers.length; i++) {
+    for (int i = 0; i < pointers.length; i++) {
       TextSpan span = TextSpan(
         style: const TextStyle(
             color: Colors.black, fontSize: 24.0, fontFamily: 'Roboto'),
@@ -329,24 +333,24 @@ class ShapesPainter extends CustomPainter {
       for (int i = 0; i < 15; i++) {
         entriesX.add(coordinates[indexList[i]].x);
         entriesY.add(coordinates[indexList[i]].y);
+        canvas.drawCircle(Offset(entriesX[i], entriesY[i]), 5.5, paint);
       }
     }
 
     compare();
 
-    canvas.drawLine(const Offset(105, 0), const Offset(200, 400), protan);
-    canvas.drawLine(const Offset(200, 0), const Offset(110, 400), deutan);
-    canvas.drawLine(const Offset(0, 220), const Offset(370, 150), tritan);
+    canvas.drawLine(const Offset(100, 0), const Offset(200, 400), protan);
+    canvas.drawLine(const Offset(200, 0), const Offset(100, 400), deutan);
+    canvas.drawLine(const Offset(0, 210), const Offset(360, 150), tritan);
 
     void connect() {
-      
-      for (var j = 0; j < 15 - 1; j++) {
-        canvas.drawLine(Offset(entriesX[j], entriesY[j]),
-            Offset(entriesX[j + 1], entriesY[j + 1]), paint);
+      for (int i = 0; i < 15 - 1; i++) {
+        canvas.drawLine(Offset(entriesX[i], entriesY[i]),
+            Offset(entriesX[i + 1], entriesY[i + 1]), paint);
       }
     }
 
-    //connect();
+    connect();
   }
 
   @override
