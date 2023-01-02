@@ -19,11 +19,9 @@ class Display extends StatelessWidget {
         context: context,
         builder: (context) {
           return Container(
-              //value: null,
-              child: Container(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-            child: SettingsForm(),
-          ));
+            child: const SettingsForm(),
+          );
         }
       );
     }
