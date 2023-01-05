@@ -45,9 +45,18 @@ class _HomeState extends State<Home> {
         selectedIndex: index,
         onDestinationSelected: (index) => setState(() => this.index = index),
         destinations: [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.pages), label: 'Tests'),
-          NavigationDestination(icon: Icon(Icons.adjust), label: 'Results'),
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home), 
+            label: 'Home'),
+          NavigationDestination(
+            icon: Icon(Icons.visibility_outlined),
+            selectedIcon: Icon(Icons.visibility), 
+            label: 'Tests'),
+          NavigationDestination(
+            icon: Icon(Icons.all_inbox_outlined), 
+            selectedIcon: Icon(Icons.all_inbox),
+            label: 'Results'),
         ]),
     );
   }
