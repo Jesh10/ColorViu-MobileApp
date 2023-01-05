@@ -300,7 +300,7 @@ class _d15ResultState extends State<d15Result> {
     datetime.toString();
     DatabaseService(uid: userid).createResult(
         userid, 'D-15 Arrangement Test', deficiency, severity, datetime);
-    Navigator.pushNamed(context, '/');
+    Navigator.pushNamed(context, '/results');
   }
 
   @override

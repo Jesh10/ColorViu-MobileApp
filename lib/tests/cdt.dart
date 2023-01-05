@@ -20,7 +20,7 @@ class CDT extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
-          title: const Text('Color Deficiency Test '),
+          title: const Text('ColorViu'),
           backgroundColor: Colors.brown[400],
           elevation: 0,
           actions: [

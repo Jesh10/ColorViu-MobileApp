@@ -119,8 +119,6 @@ class _IshiharaState extends State<Ishihara> {
   void nextQuestion() {
     if (index == _questions.length - 1) {
       findStatement();;
-      DatabaseService(uid: userid).createResult(
-          userid, 'Ishihara', deficiency, statement, DateTime.now());
       showDialog(
           context: context,
           barrierDismissible: false,
@@ -214,17 +212,9 @@ class _IshiharaState extends State<Ishihara> {
   }
 
   void startOver() {
-    setState(() {
-      index = 0;
-      score = 0;
-      progress = 0;
-      isPressed = false;
-      isAlreadySelected = false;
-      wrong = [];
-      _currentOption = 0;
-      _questions.shuffle();
-    });
-    Navigator.of(context, rootNavigator: true).pop();
+    DatabaseService(uid: userid).createResult(
+          userid, 'Ishihara Test', deficiency, statement, DateTime.now());
+    Navigator.pushNamed(context, '/results');
   }
 
   final AuthService _auth = AuthService();

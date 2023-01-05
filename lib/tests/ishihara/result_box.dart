@@ -44,11 +44,9 @@ class ResultBox extends StatelessWidget {
               const SizedBox(height: 25),
               CircleAvatar(
                 radius: 80,
-                backgroundColor: result == questionLength / 2
-                    ? Colors.yellow
-                    : result < questionLength - 5
-                        ? Colors.red
-                        : Colors.green,
+                backgroundColor: result < questionLength - 5
+                  ? Colors.red
+                  : Colors.green,
                 child: Text(
                   '$result/$questionLength',
                   style: const TextStyle(fontSize: 35, color: Colors.white),
@@ -68,7 +66,7 @@ class ResultBox extends StatelessWidget {
                 child: GestureDetector(
                   onTap: onPressed,
                   child: const Text(
-                    'Try Again?',
+                    'Submit Results',
                     style: TextStyle(
                         color: Colors.blue, fontSize: 35, letterSpacing: 1),
                   )

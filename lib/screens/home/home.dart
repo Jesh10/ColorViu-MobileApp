@@ -18,7 +18,6 @@ class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
   int index = 0;
   final screens = [
-    Navigation(),
     CDT(),
     retrieveResults(),
   ];
@@ -49,14 +48,16 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home), 
             label: 'Home'),
-          NavigationDestination(
-            icon: Icon(Icons.visibility_outlined),
-            selectedIcon: Icon(Icons.visibility), 
-            label: 'Tests'),
+          
           NavigationDestination(
             icon: Icon(Icons.all_inbox_outlined), 
             selectedIcon: Icon(Icons.all_inbox),
             label: 'Results'),
+          
+          NavigationDestination(
+            icon: Icon(Icons.info_outline),
+            selectedIcon: Icon(Icons.info), 
+            label: 'More'),
         ]),
     );
   }
