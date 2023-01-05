@@ -40,6 +40,18 @@ class DatabaseService {
     }).toList();
   }
 
+  List<Results> _resultsListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.docs.map((doc) {
+      return Results(
+          uid: uid,
+          test: doc.get('name') ?? '',
+          result: doc.get('gender') ?? '',
+          severity: doc.get('dof') ?? '',
+          dateTime: doc.get('datetime') ?? ''
+        );
+    }).toList();
+  }
+
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
         uid: uid,
@@ -48,24 +60,15 @@ class DatabaseService {
         dof: snapshot['dof']);
   }
 
-  Results _resultsDataFromSnapshot(DocumentSnapshot snapshot) {
-    return Results(
-        uid: uid,
-        test: snapshot['test'],
-        result: snapshot['result'],
-        severity: snapshot['severity'],
-        dateTime: snapshot['datetime']);    
-  }
-
   Stream<List<ColorUser>> get users {
     return userCollection.snapshots().map(_userListFromSnapshot);
   }
 
-  Stream<UserData> get userData {
-    return userCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
+  Stream<List<Results>> get resultsData {
+    return resultCollection.snapshots().map(_resultsListFromSnapshot);
   }
 
-  Stream<Results> get resultsData {
-    return userCollection.doc(uid).snapshots().map(_resultsDataFromSnapshot);
+  Stream<UserData> get userData {
+    return userCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
 }

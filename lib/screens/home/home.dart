@@ -1,5 +1,5 @@
 import 'package:colorviu/models/user.dart';
-import 'package:colorviu/screens/results/retrieveResults.dart';
+import 'package:colorviu/results/retrieveResults.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
 import 'package:colorviu/tests/cdt.dart';
