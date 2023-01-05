@@ -54,8 +54,7 @@ class DatabaseService {
         test: snapshot['test'],
         result: snapshot['result'],
         severity: snapshot['severity'],
-        dateTime: snapshot['datetime']);
-        
+        dateTime: snapshot['datetime']);    
   }
 
   Stream<List<ColorUser>> get users {
