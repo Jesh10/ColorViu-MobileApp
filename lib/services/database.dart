@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:colorviu/models/results.dart';
 import 'package:colorviu/models/user.dart';
 
 class DatabaseService {
@@ -47,11 +48,25 @@ class DatabaseService {
         dof: snapshot['dof']);
   }
 
+  Results _resultsDataFromSnapshot(DocumentSnapshot snapshot) {
+    return Results(
+        uid: uid,
+        test: snapshot['test'],
+        result: snapshot['result'],
+        severity: snapshot['severity'],
+        dateTime: snapshot['datetime']);
+        
+  }
+
   Stream<List<ColorUser>> get users {
     return userCollection.snapshots().map(_userListFromSnapshot);
   }
 
   Stream<UserData> get userData {
     return userCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
+  }
+
+  Stream<Results> get resultsData {
+    return userCollection.doc(uid).snapshots().map(_resultsDataFromSnapshot);
   }
 }
