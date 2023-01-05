@@ -12,7 +12,7 @@ class resultsTable extends StatefulWidget {
 class _resultsTableState extends State<resultsTable> {
   @override
   Widget build(BuildContext context) {
-    final results = Provider.of<List<Results>>(context) ?? [];
+    final results = Provider.of<List<Results>>(context);
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
