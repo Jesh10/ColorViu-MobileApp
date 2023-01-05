@@ -1,11 +1,7 @@
-import 'package:colorviu/models/user.dart';
 import 'package:colorviu/results/retrieveResults.dart';
-import 'package:colorviu/screens/home/navigation.dart';
 import 'package:colorviu/services/auth.dart';
-import 'package:colorviu/services/database.dart';
 import 'package:colorviu/tests/cdt.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   Home({super.key});
@@ -41,6 +37,7 @@ class _HomeState extends State<Home> {
       body: screens[index],
       bottomNavigationBar: NavigationBar(
         height: 60,
+        backgroundColor: Colors.grey[50],
         selectedIndex: index,
         onDestinationSelected: (index) => setState(() => this.index = index),
         destinations: [

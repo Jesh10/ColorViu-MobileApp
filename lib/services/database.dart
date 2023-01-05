@@ -69,6 +69,6 @@ class DatabaseService {
   }
 
   Stream<List<Results>> get resultsData {
-    return resultCollection.snapshots().map(_resultsListFromSnapshot);
+    return resultCollection.orderBy('datetime', descending: true).snapshots().map(_resultsListFromSnapshot);
   }
 }

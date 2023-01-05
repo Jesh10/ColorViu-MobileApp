@@ -19,7 +19,6 @@ class _resultsListState extends State<resultsList> {
     final uid = Provider.of<MyUser>(context);
     userid = uid.uid;
     final results = Provider.of<List<Results>>(context);
-    print(results);
     return ListView.builder(
       itemCount: results.length,
       itemBuilder: (context, index) {

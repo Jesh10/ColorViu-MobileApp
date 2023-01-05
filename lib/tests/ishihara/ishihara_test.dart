@@ -189,20 +189,8 @@ class _IshiharaState extends State<Ishihara> {
   void checkAnswerAndUpdate(int value) {
     if (value == _questions[index].answer) {
       score++;
-      // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      //   content: Text('Correct!'),
-      //   behavior: SnackBarBehavior.floating,
-      //   margin: EdgeInsets.symmetric(vertical: 20),
-      // ));
     } else {
       wrong.add(_questions[index].id);
-      //print(wrong);
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   const SnackBar(
-      //   content: Text('Wrong!'),
-      //   behavior: SnackBarBehavior.floating,
-      //   margin: EdgeInsets.symmetric(vertical: 20),
-      // ));
     }
     setState(() {
       isPressed = true;
@@ -213,8 +201,9 @@ class _IshiharaState extends State<Ishihara> {
 
   void startOver() {
     DatabaseService(uid: userid).createResult(
-          userid, 'Ishihara Test', deficiency, statement, DateTime.now());
-    Navigator.pushNamed(context, '/results');
+        userid, 'Ishihara Test', deficiency, statement, DateTime.now());
+    Navigator.of(context, rootNavigator: true).pop();
+    Navigator.pushNamed(context, '/');
   }
 
   final AuthService _auth = AuthService();
@@ -232,13 +221,6 @@ class _IshiharaState extends State<Ishihara> {
         elevation: 0,
         shadowColor: Colors.transparent,
         actions: [
-          // Padding(
-          //   padding: const EdgeInsets.all(18),
-          //   child: Text(
-          //     'Score: $score',
-          //     style: const TextStyle(fontSize: 18),
-          //   ),
-          // ),
           ElevatedButton.icon(
               icon: const Icon(Icons.person),
               label: const Text('logout'),

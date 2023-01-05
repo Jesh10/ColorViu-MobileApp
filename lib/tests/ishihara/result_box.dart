@@ -68,7 +68,7 @@ class ResultBox extends StatelessWidget {
                   child: const Text(
                     'Submit Results',
                     style: TextStyle(
-                        color: Colors.blue, fontSize: 35, letterSpacing: 1),
+                        color: Colors.blue, fontSize: 30,),
                   )
                 ),
               ),
