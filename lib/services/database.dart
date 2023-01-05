@@ -47,7 +47,7 @@ class DatabaseService {
           test: doc.get('test') ?? '',
           result: doc.get('result') ?? '',
           severity: doc.get('severity') ?? '',
-          dateTime: doc.get('datetime').toString() ?? ''
+          dateTime: doc.get('datetime') ?? ''
         );
     }).toList();
   }

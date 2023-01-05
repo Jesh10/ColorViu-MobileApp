@@ -1,5 +1,6 @@
 import 'package:colorviu/models/results.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ResultsTile extends StatelessWidget {
 
@@ -19,7 +20,7 @@ class ResultsTile extends StatelessWidget {
             backgroundImage: AssetImage('assets/ishihara.jpeg'),
             ),
             title: Text(results.test),
-            subtitle: Text(results.severity),
+            subtitle: Text(timeago.format(results.dateTime.toDate())),
         ),
       )
     );

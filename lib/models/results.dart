@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Results {
  String uid;
  String test;
  String result;
  String severity;
- String dateTime;
+ Timestamp dateTime;
 
   Results({
     required this.uid,

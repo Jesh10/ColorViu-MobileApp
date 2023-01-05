@@ -118,8 +118,7 @@ class _IshiharaState extends State<Ishihara> {
 
   void nextQuestion() {
     if (index == _questions.length - 1) {
-      findStatement();
-      var datetime = DateTime.now();
+      findStatement();;
       DatabaseService(uid: userid).createResult(
           userid, 'Ishihara', deficiency, statement, DateTime.now());
       showDialog(
