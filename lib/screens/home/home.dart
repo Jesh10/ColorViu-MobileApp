@@ -1,5 +1,4 @@
 import 'package:colorviu/models/user.dart';
-import 'package:colorviu/screens/results/retrieveResults.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
 import 'package:colorviu/tests/cdt.dart';
@@ -68,16 +67,11 @@ class Home extends StatelessWidget {
                 child: const Text('COLOR DEFICIENCY TEST (CDT)'),
               ),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => retrieveResults()),
-                  );
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                     elevation: 12.0,
                     textStyle: const TextStyle(color: Colors.white)),
-                child: const Text('CDT RESULTS'),
+                child: const Text('COLOR PLATE GENERATOR'),
               ),
               ElevatedButton(
                 onPressed: () {},
