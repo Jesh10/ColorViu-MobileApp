@@ -43,11 +43,11 @@ class DatabaseService {
   List<Results> _resultsListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return Results(
-          uid: uid,
-          test: doc.get('name') ?? '',
-          result: doc.get('gender') ?? '',
-          severity: doc.get('dof') ?? '',
-          dateTime: doc.get('datetime') ?? ''
+          uid: doc.get('uid') ?? '',
+          test: doc.get('test') ?? '',
+          result: doc.get('result') ?? '',
+          severity: doc.get('severity') ?? '',
+          dateTime: doc.get('datetime').toString() ?? ''
         );
     }).toList();
   }
@@ -64,11 +64,11 @@ class DatabaseService {
     return userCollection.snapshots().map(_userListFromSnapshot);
   }
 
-  Stream<List<Results>> get resultsData {
-    return resultCollection.snapshots().map(_resultsListFromSnapshot);
-  }
-
   Stream<UserData> get userData {
     return userCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
+  }
+
+  Stream<List<Results>> get resultsData {
+    return resultCollection.snapshots().map(_resultsListFromSnapshot);
   }
 }

@@ -296,8 +296,10 @@ List<Coordinates> coordinates = [
 
 class _d15ResultState extends State<d15Result> {
   void save() {
+    var datetime = DateTime.now();
+    datetime.toString();
     DatabaseService(uid: userid).createResult(
-        userid, 'D-15 Arrangement Test', deficiency, severity, DateTime.now());
+        userid, 'D-15 Arrangement Test', deficiency, severity, datetime);
     Navigator.pushNamed(context, '/');
   }
 

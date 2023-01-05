@@ -1,10 +1,10 @@
+import 'package:colorviu/models/results.dart';
 import 'package:flutter/material.dart';
-import 'package:colorviu/models/user.dart';
 
-class UserTile extends StatelessWidget {
+class ResultsTile extends StatelessWidget {
 
-  final ColorUser user;
-  const UserTile({super.key, required this.user});
+  final Results results;
+  const ResultsTile({super.key, required this.results});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +16,10 @@ class UserTile extends StatelessWidget {
           leading: const CircleAvatar(
             radius: 25,
             //backgroundColor: Colors.brown[user.gender],
-            backgroundImage: AssetImage('assets/_DSC0038.jpg'),
+            backgroundImage: AssetImage('assets/ishihara.jpeg'),
             ),
-            title: Text(user.name),
-            subtitle: Text('Takes ${user.gender} sugar(s)'),
+            title: Text(results.test),
+            subtitle: Text(results.severity),
         ),
       )
     );

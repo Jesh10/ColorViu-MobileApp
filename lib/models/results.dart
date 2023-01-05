@@ -1,9 +1,9 @@
 class Results {
-  final String uid;
-  final String test;
-  final String result;
-  final String severity;
-  final DateTime dateTime;
+ String uid;
+ String test;
+ String result;
+ String severity;
+ String dateTime;
 
   Results({
     required this.uid,
