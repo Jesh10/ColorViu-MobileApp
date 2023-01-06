@@ -42,9 +42,17 @@ class CDT extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
+          child: Container(
+            height: 900,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/background.jpg"),
+                  fit: BoxFit.cover),
+            ),
+            child: Column(
+              children: [
+                Padding(
                 padding: const EdgeInsets.all(10),
                 child: GestureDetector(
                   onTap: () {
@@ -87,51 +95,51 @@ class CDT extends StatelessWidget {
                 )
               ),
             Padding(
-                padding: const EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const InfoD15()),
-                    );
-                  },
-                  child: Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 10),
-                        const ListTile(
-                          title: Text(
-                            'D-15 Arrangement Test',
-                            style: TextStyle(
-                              fontSize: 30
-                            ),
+              padding: const EdgeInsets.all(10),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const InfoD15()),
+                  );
+                },
+                child: Card(
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      const ListTile(
+                        title: Text(
+                          'D-15 Arrangement Test',
+                          style: TextStyle(
+                            fontSize: 30
                           ),
-                          // subtitle: Text(
-                          //   '5 mins',
-                          //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                          // ),
                         ),
-                        const SizedBox(height: 15),
-                        const Image(image: AssetImage('assets/d15card.png')),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
+                        // subtitle: Text(
+                        //   '5 mins',
+                        //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                        // ),
+                      ),
+                      const SizedBox(height: 15),
+                      const Image(image: AssetImage('assets/d15card.jpg')),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
                           child: Text(
                             'The D15 set is a modification of the well-known FarnsworthMunsell 100 Hue Test. \n \n'
                             'Each D15 set contains a reference disc and fifteen numbered discs, which make up an incomplete color circle.',
                             style: TextStyle(color: Colors.black.withOpacity(0.6)),
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
                 )
               )
-            ]
+              ],
+            )
           ),
-        )
-      ),
+        ),
+      )
     );
   }
 }
