@@ -2,9 +2,7 @@ import 'package:colorviu/models/user.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
 import 'package:colorviu/tests/d-15/d15_info.dart';
-import 'package:colorviu/tests/d-15/d15_test.dart';
 import 'package:colorviu/tests/ishihara/ishihara_info.dart';
-import 'package:colorviu/tests/ishihara/ishihara_test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,13 +20,18 @@ class CDT extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
-          title: const Text('ColorViu'),
+          title: const Text(
+            'ColorViu',
+            style: TextStyle(
+              fontSize: 25,
+            ),
+          ),
           backgroundColor: Colors.brown[400],
           elevation: 0,
           actions: [
             ElevatedButton.icon(
                 icon: const Icon(Icons.person),
-                label: const Text('logout'),
+                label: const Text('Logout'),
                 onPressed: () async {
                   await _auth.signOut();
                 }),
@@ -72,7 +75,7 @@ class CDT extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
-                            'The Ishihara Test is the most well known color blindness test all around the world. \n' 
+                            'The Ishihara Test is the most well known color blindness test all around the world. \n \n' 
                             'Ishihara was a Japanese ophthalmologist who established the Ishihara Color Vision Test to detect colour blindness in 1917.',
                             style: TextStyle(color: Colors.black.withOpacity(0.6)),
                           ),
@@ -109,12 +112,13 @@ class CDT extends StatelessWidget {
                           //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
                           // ),
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 15),
                         const Image(image: AssetImage('assets/d15card.png')),
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
-                            'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+                            'The D15 set is a modification of the well-known FarnsworthMunsell 100 Hue Test. \n \n'
+                            'Each D15 set contains a reference disc and fifteen numbered discs, which make up an incomplete color circle.',
                             style: TextStyle(color: Colors.black.withOpacity(0.6)),
                           ),
                         ),

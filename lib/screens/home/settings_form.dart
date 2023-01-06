@@ -80,6 +80,7 @@ class _SettingsFormState extends State<SettingsForm> {
                                 _currentName ?? userData!.name,
                                 _currentGender ?? userData!.gender,
                                 _currentDof ?? userData!.dof);
+                        // ignore: use_build_context_synchronously
                         Navigator.pop(context);
                       }
                     },

@@ -1,17 +1,17 @@
 import 'package:colorviu/results/retrieveResults.dart';
-import 'package:colorviu/services/auth.dart';
+//import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/tests/cdt.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final AuthService _auth = AuthService();
+  //final AuthService _auth = AuthService();
   int index = 0;
   final screens = [
     CDT(),
@@ -19,20 +19,6 @@ class _HomeState extends State<Home> {
   ];
   @override
   Widget build(BuildContext context) {
-    // ignore: no_leading_underscores_for_local_identifiers
-    // void _showSettingsPanel() {
-    //   showModalBottomSheet(
-    //     context: context,
-    //     builder: (context) {
-    //       return Container(
-    //           //value: null,
-    //           child: Container(
-    //         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
-    //         child: SettingsForm(),
-    //       ));
-    //     }
-    //   );
-    // }
     return Scaffold(
       body: screens[index],
       bottomNavigationBar: NavigationBar(
@@ -40,18 +26,19 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.grey[50],
         selectedIndex: index,
         onDestinationSelected: (index) => setState(() => this.index = index),
+        // ignore: prefer_const_literals_to_create_immutables
         destinations: [
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home), 
             label: 'Home'),
           
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.all_inbox_outlined), 
             selectedIcon: Icon(Icons.all_inbox),
             label: 'Results'),
           
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.info_outline),
             selectedIcon: Icon(Icons.info), 
             label: 'More'),

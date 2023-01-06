@@ -43,7 +43,7 @@ class _RegisterState extends State<Register> {
             appBar: AppBar(
               backgroundColor: Colors.brown[400],
               elevation: 0,
-              title: const Text('Sign Up to Colorviu'),
+              title: const Text('Sign Up to ColorViu'),
               actions: [
                 ElevatedButton.icon(
                     icon: const Icon(Icons.person),
@@ -97,7 +97,7 @@ class _RegisterState extends State<Register> {
                           labelText: 'Gender',
                           items: genders,
                           onChanged: (val) =>
-                              {setState(() => gender = val), print(val)},
+                              {setState(() => gender = val)},
                         ),
                         const SizedBox(height: 20),
                         DateTimeFormField(
@@ -116,7 +116,7 @@ class _RegisterState extends State<Register> {
                           onDateSelected: (DateTime val) {
                             String selectedData =
                                 DateFormat('dd-MM-yyyy').format(val);
-                            print(selectedData);
+                            //print(selectedData);
                             setState(() => dof = selectedData);
                           },
                         ),
@@ -134,7 +134,7 @@ class _RegisterState extends State<Register> {
                                   email, password, fullName, gender, dof);
                               if (result == null) {
                                 setState(() {
-                                  error = 'Please supply a valid email';
+                                  error = 'Please supply a valid Email';
                                   loading = false;
                                 });
                               }

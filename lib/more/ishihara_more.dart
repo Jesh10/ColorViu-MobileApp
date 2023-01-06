@@ -34,9 +34,10 @@ class _MoreIshiharaState extends State<MoreIshihara> {
         child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 10),
+        // ignore: prefer_const_literals_to_create_immutables
         child: Column(children: [
           const SizedBox(height: 10),
-          Text(
+          const Text(
             'What this Test is About',
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -44,7 +45,7 @@ class _MoreIshiharaState extends State<MoreIshihara> {
             ),
           ),
           const Divider(color: null),
-          Image(
+          const Image(
             image: AssetImage("assets/ishihara.jpeg"),
           ),
           const SizedBox(height: 20),

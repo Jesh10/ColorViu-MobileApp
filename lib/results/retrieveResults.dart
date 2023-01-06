@@ -1,12 +1,11 @@
 import 'package:colorviu/models/results.dart';
 import 'package:colorviu/results/resultsList.dart';
-import 'package:colorviu/results/resultsTable.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+// ignore: camel_case_types
 class retrieveResults extends StatelessWidget {
   
   retrieveResults({super.key});
@@ -18,7 +17,7 @@ class retrieveResults extends StatelessWidget {
     return StreamProvider<List<Results>>.value(
       //catchError: (_, __) => null,
       value: DatabaseService(uid: '').resultsData,
-      initialData: [],
+      initialData: const [],
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
@@ -30,25 +29,14 @@ class retrieveResults extends StatelessWidget {
           elevation: 0,
           actions: [
             ElevatedButton.icon(
-                icon: const Icon(Icons.person),
-                label: const Text('logout'),
-                onPressed: () async {
-                  await _auth.signOut();
-                }),
-            // TextButton.icon(
-            //   onPressed: () => _showSettingsPanel(),
-            //   icon: Icon(Icons.settings),
-            //   label: Text('settings'))
+              icon: const Icon(Icons.person),
+              label: const Text('Logout'),
+              onPressed: () async {
+                await _auth.signOut();
+              }
+            ),
           ],
         ),
-        // Padding(
-        //   padding: const EdgeInsets.symmetric(horizontal: 55),
-        //   child: Text(
-        //     getCurrentDate() + 'Results',
-        //     textAlign: TextAlign.center,
-        //     style: const TextStyle(fontSize: 50),
-        //   ),
-        // ),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -56,7 +44,7 @@ class retrieveResults extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: resultsList(),
+          child: const resultsList(),
         ),
       ),
     );

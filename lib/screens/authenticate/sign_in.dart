@@ -27,7 +27,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0,
-        title: const Text('Sign In to Colorviu'),
+        title: const Text('Sign In to ColorViu'),
         actions: [
           ElevatedButton.icon(
               icon: const Icon(Icons.person),

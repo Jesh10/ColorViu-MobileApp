@@ -18,14 +18,19 @@ class _InfoIshiharaState extends State<InfoIshihara> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
-        title: const Text('Ishihara Test'),
+        title: const Text(
+          'Ishihara Test',
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
         backgroundColor: Colors.brown[400],
         elevation: 0,
         shadowColor: Colors.transparent,
         actions: [
           ElevatedButton.icon(
               icon: const Icon(Icons.person),
-              label: const Text('logout'),
+              label: const Text('Logout'),
               onPressed: () async {
                 await _auth.signOut();
               }),

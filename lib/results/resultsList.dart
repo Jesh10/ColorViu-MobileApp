@@ -4,6 +4,7 @@ import 'package:colorviu/results/resultsTile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+// ignore: camel_case_types
 class resultsList extends StatefulWidget {
   const resultsList({super.key});
 
@@ -13,6 +14,7 @@ class resultsList extends StatefulWidget {
 
 late String userid;
 
+// ignore: camel_case_types
 class _resultsListState extends State<resultsList> {
   @override
   Widget build(BuildContext context) {

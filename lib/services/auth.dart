@@ -26,7 +26,7 @@ class AuthService {
 
       return _userFromFirebaseUser(user);
     } catch (e) {
-      print(e.toString());
+      //print(e.toString());
       return null;
     }
   }
@@ -42,7 +42,7 @@ class AuthService {
           .updateUserData(fullName, gender, dof);
       return _userFromFirebaseUser(user);
     } catch (e) {
-      print(e.toString());
+      //print(e.toString());
       return null;
     }
   }
@@ -54,7 +54,7 @@ class AuthService {
         getPages: Routes.routes()
       );
     } catch (e) {
-      print(e.toString());
+      //print(e.toString());
       return null;
     }
   }

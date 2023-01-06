@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:colorviu/models/coordinates.dart';
 import 'package:colorviu/models/pointers.dart';
 import 'package:colorviu/models/user.dart';
@@ -137,9 +136,9 @@ class _D15State extends State<D15> {
           severity = 'Normal Color Vision';
         }
       }
-      print(pro);
-      print(deu);
-      print(tri);
+      // print(pro);
+      // print(deu);
+      // print(tri);
     }
 
     gradient();
@@ -174,7 +173,7 @@ class _D15State extends State<D15> {
         actions: [
           ElevatedButton.icon(
               icon: const Icon(Icons.person),
-              label: const Text('logout'),
+              label: const Text('Logout'),
               onPressed: () async {
                 await _auth.signOut();
               }),
@@ -247,6 +246,7 @@ class _D15State extends State<D15> {
   }
 }
 
+// ignore: camel_case_types
 class d15Result extends StatefulWidget {
   const d15Result({super.key});
 
@@ -294,6 +294,7 @@ List<Coordinates> coordinates = [
   //Coordinates(id: 16, x: 100, y: 409)
 ];
 
+// ignore: camel_case_types
 class _d15ResultState extends State<d15Result> {
   void save() {
     var datetime = DateTime.now();

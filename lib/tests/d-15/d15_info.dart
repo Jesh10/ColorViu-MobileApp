@@ -25,7 +25,7 @@ class _InfoD15State extends State<InfoD15> {
         actions: [
           ElevatedButton.icon(
               icon: const Icon(Icons.person),
-              label: const Text('logout'),
+              label: const Text('Logout'),
               onPressed: () async {
                 await _auth.signOut();
               }),

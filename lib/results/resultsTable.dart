@@ -1,7 +1,8 @@
-import 'package:colorviu/models/results.dart';
+//import 'package:colorviu/models/results.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
+// ignore: camel_case_types
 class resultsTable extends StatefulWidget {
   const resultsTable({super.key});
 
@@ -9,10 +10,11 @@ class resultsTable extends StatefulWidget {
   State<resultsTable> createState() => _resultsTableState();
 }
 
+// ignore: camel_case_types
 class _resultsTableState extends State<resultsTable> {
   @override
   Widget build(BuildContext context) {
-    final results = Provider.of<List<Results>>(context);
+    //final results = Provider.of<List<Results>>(context);
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),
