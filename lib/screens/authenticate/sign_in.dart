@@ -27,7 +27,12 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0,
-        title: const Text('Sign In to ColorViu'),
+        title: const Text(
+          'ColorViu',
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
         actions: [
           ElevatedButton.icon(
               icon: const Icon(Icons.person),
@@ -37,62 +42,94 @@ class _SignInState extends State<SignIn> {
               }),
         ],
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
-          child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  TextFormField(
+          height: 900,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/background.jpg"),
+              fit: BoxFit.cover),
+          ),
+          child: Column(
+            children: [
+              const Text(
+                'Sign In to \n' 'Your ColorViu Account',
+                style: TextStyle(
+                  fontSize: 40,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 15),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    TextFormField(
+                        decoration:
+                            textInputDecoration.copyWith(hintText: 'Email'),
+                        validator: (val) =>
+                            val!.isEmpty ? 'Enter an Email' : null,
+                        onChanged: (val) {
+                          setState(() => email = val);
+                        }),
+                    const SizedBox(height: 20),
+                    TextFormField(
                       decoration:
-                          textInputDecoration.copyWith(hintText: 'Email'),
-                      validator: (val) =>
-                          val!.isEmpty ? 'Enter an Email' : null,
+                          textInputDecoration.copyWith(hintText: 'Password'),
+                      obscureText: true,
+                      validator: (val) => val!.length < 6
+                          ? 'Enter a password 6+ characters long'
+                          : null,
                       onChanged: (val) {
-                        setState(() => email = val);
-                      }),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    decoration:
-                        textInputDecoration.copyWith(hintText: 'Password'),
-                    obscureText: true,
-                    validator: (val) => val!.length < 6
-                        ? 'Enter a password 6+ characters long'
-                        : null,
-                    onChanged: (val) {
-                      setState(() => password = val);
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.pink[400]!),
-                        textStyle: MaterialStateProperty.all(
-                            const TextStyle(color: Colors.white))),
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        setState(() => loading = true);
-                        dynamic result = await _auth.signInWithEmailAndPassword(
-                            email, password);
-                        if (result == null) {
-                          setState(() {
-                            error = 'Could not Sign In';
-                            loading = false;
-                          });
-                        }
-                      }
-                    },
-                    child: const Text('Sign In'),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    error,
-                    style: const TextStyle(color: Colors.red, fontSize: 14),
-                  )
-                ],
-              ))),
+                        setState(() => password = val);
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                    SizedBox(
+                      height: 50,
+                      width: 120,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.pink[400]!),
+                            textStyle: MaterialStateProperty.all(
+                                const TextStyle(color: Colors.white))),
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() => loading = true);
+                            dynamic result = await _auth.signInWithEmailAndPassword(
+                                email, password);
+                            if (result == null) {
+                              setState(() {
+                                error = 'Could not Sign In';
+                                loading = false;
+                              });
+                            }
+                          }
+                        },
+                        child: const Text(
+                          'Sign In',
+                          style: TextStyle(
+                            fontSize: 20
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      error,
+                      style: const TextStyle(color: Colors.red, fontSize: 14),
+                    )
+                  ],
+                )
+              ),
+            ],
+          )
+        ),
+      )
     );
   }
 }

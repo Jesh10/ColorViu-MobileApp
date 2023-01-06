@@ -52,13 +52,56 @@ class CDT extends StatelessWidget {
             ),
             child: Column(
               children: [
+                const SizedBox(height: 10),
                 Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const InfoIshihara()),
+                      );
+                    },
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          const ListTile(
+                            title: Text(
+                              'Ishihara Test',
+                              style: TextStyle(
+                                fontSize: 35
+                              ),
+                            ),
+                            // subtitle: Text(
+                            //   '5 mins',
+                            //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                            // ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Image(image: AssetImage('assets/ishihara.jpeg')),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(
+                              'The Ishihara Test is the most well known color blindness test all around the world. \n \n' 
+                              'Ishihara was a Japanese ophthalmologist who established the Ishihara Color Vision Test to detect colour blindness in 1917.',
+                              style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                            ),
+                          ),
+                          
+                        ],
+                      ),
+                    ),
+                  )
+                ),
+              Padding(
                 padding: const EdgeInsets.all(10),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const InfoIshihara()),
+                      MaterialPageRoute(builder: (context) => const InfoD15()),
                     );
                   },
                   child: Card(
@@ -68,9 +111,9 @@ class CDT extends StatelessWidget {
                         const SizedBox(height: 10),
                         const ListTile(
                           title: Text(
-                            'Ishihara Test',
+                            'D-15 Arrangement Test',
                             style: TextStyle(
-                              fontSize: 35
+                              fontSize: 30
                             ),
                           ),
                           // subtitle: Text(
@@ -78,63 +121,21 @@ class CDT extends StatelessWidget {
                           //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
                           // ),
                         ),
-                        const SizedBox(height: 10),
-                        const Image(image: AssetImage('assets/ishihara.jpeg')),
+                        const SizedBox(height: 15),
+                        const Image(image: AssetImage('assets/d15card.jpg')),
                         Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            'The Ishihara Test is the most well known color blindness test all around the world. \n \n' 
-                            'Ishihara was a Japanese ophthalmologist who established the Ishihara Color Vision Test to detect colour blindness in 1917.',
-                            style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                            child: Text(
+                              'The D15 set is a modification of the well-known FarnsworthMunsell 100 Hue Test. \n \n'
+                              'Each D15 set contains a reference disc and fifteen numbered discs, which make up an incomplete color circle.',
+                              style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                            ),
                           ),
-                        ),
-                        
-                      ],
-                    ),
-                  ),
-                )
-              ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const InfoD15()),
-                  );
-                },
-                child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      const ListTile(
-                        title: Text(
-                          'D-15 Arrangement Test',
-                          style: TextStyle(
-                            fontSize: 30
-                          ),
-                        ),
-                        // subtitle: Text(
-                        //   '5 mins',
-                        //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                        // ),
+                        ],
                       ),
-                      const SizedBox(height: 15),
-                      const Image(image: AssetImage('assets/d15card.jpg')),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            'The D15 set is a modification of the well-known FarnsworthMunsell 100 Hue Test. \n \n'
-                            'Each D15 set contains a reference disc and fifteen numbered discs, which make up an incomplete color circle.',
-                            style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                          ),
-                        ),
-                      ],
                     ),
-                  ),
+                  )
                 )
-              )
               ],
             )
           ),
