@@ -1,7 +1,9 @@
 import 'package:colorviu/models/user.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
+import 'package:colorviu/tests/d-15/d15_info.dart';
 import 'package:colorviu/tests/d-15/d15_test.dart';
+import 'package:colorviu/tests/ishihara/ishihara_info.dart';
 import 'package:colorviu/tests/ishihara/ishihara_test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,35 +38,95 @@ class CDT extends StatelessWidget {
             //   label: Text('settings'))
           ],
         ),
-        body: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+        body: SingleChildScrollView(
+          child: Column(
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Ishihara()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    elevation: 12.0,
-                    textStyle: const TextStyle(color: Colors.white)),
-                child: const Text('Ishihara Test'), 
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const InfoIshihara()),
+                    );
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        const ListTile(
+                          title: Text(
+                            'Ishihara Test',
+                            style: TextStyle(
+                              fontSize: 35
+                            ),
+                          ),
+                          // subtitle: Text(
+                          //   '5 mins',
+                          //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                          // ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Image(image: AssetImage('assets/ishihara.jpeg')),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            'The Ishihara Test is the most well known color blindness test all around the world. \n' 
+                            'Ishihara was a Japanese ophthalmologist who established the Ishihara Color Vision Test to detect colour blindness in 1917.',
+                            style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                          ),
+                        ),
+                        
+                      ],
+                    ),
+                  ),
+                )
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const D15()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    elevation: 12.0,
-                    textStyle: const TextStyle(color: Colors.white)),
-                child: const Text('D-15 Test'), 
-              ),
-            ]),
+            Padding(
+                padding: const EdgeInsets.all(10),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const InfoD15()),
+                    );
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        const ListTile(
+                          title: Text(
+                            'D-15 Arrangement Test',
+                            style: TextStyle(
+                              fontSize: 30
+                            ),
+                          ),
+                          // subtitle: Text(
+                          //   '5 mins',
+                          //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                          // ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Image(image: AssetImage('assets/d15card.png')),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+                            style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                          ),
+                        ),
+                        
+                      ],
+                    ),
+                  ),
+                )
+              )
+            ]
+          ),
+        )
       ),
     );
   }

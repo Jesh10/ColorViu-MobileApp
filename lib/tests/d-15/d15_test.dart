@@ -168,7 +168,7 @@ class _D15State extends State<D15> {
     return Scaffold(
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
-        title: const Text('Color Deficiency Test '),
+        title: const Text('D-15 Arrangement'),
         backgroundColor: Colors.brown[400],
         elevation: 0,
         actions: [
@@ -308,7 +308,7 @@ class _d15ResultState extends State<d15Result> {
     return Scaffold(
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
-        title: const Text('Color Deficiency Test '),
+        title: const Text('D-15 Arrangement'),
         backgroundColor: Colors.brown[400],
         elevation: 0,
         actions: [
