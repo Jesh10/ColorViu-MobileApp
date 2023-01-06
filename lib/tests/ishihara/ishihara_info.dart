@@ -38,106 +38,118 @@ class _InfoIshiharaState extends State<InfoIshihara> {
       ),
       body: SingleChildScrollView(
         child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(children: [
-          const SizedBox(height: 10),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical:10, horizontal: 20),
-            padding: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black)
-            ),
-            child: const Text(
-              'How This Test Works',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 43,
-              ),
-            ),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/dark.jpg"),
+              fit: BoxFit.cover),
           ),
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: const Text(
-              'You will be required to interpret the various numbers shown in the pseudoisochromatic plates. \n \n' 
-              'If you are unsure about the number within the test plate input in your best guess.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 23
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(children: [
+            const SizedBox(height: 10),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical:10, horizontal: 20),
+              padding: const EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white)
               ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical:10, horizontal: 20),
-            padding: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black)
-            ),
-            child: const Text(
-              'Before Taking the Test',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 43,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(15),
-            child: const Text(
-              '1. Remove any glasses with colored lenses', 
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 23,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal:20),
-            child: const Text(
-              '2. Turn up your screen brightness',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 23
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: const Text(
-              '3. The color blind test plates forms a one digit number',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 23
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          SizedBox(
-            height: 60,
-            width: 150,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.pink[300]!),
-                  textStyle: MaterialStateProperty.all(
-                      const TextStyle(fontSize: 30))),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Ishihara()),
-                  );
-              }, 
               child: const Text(
-                'Proceed',
+                'How This Test Works',
+                textAlign: TextAlign.center,
                 style: TextStyle(
+                  fontSize: 43,
                   color: Colors.white
                 ),
-              )
+              ),
             ),
-          ),
-          const SizedBox(height: 30),
-        ]),
-      )),
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: const Text(
+                'You will be required to interpret the various numbers shown in the pseudoisochromatic plates. \n \n'
+                'Use the Slider below the test plates to slide to the number that you think is being displayed within the plate \n \n' 
+                'If you are unsure about the number within the test plate input in your best guess.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 23,
+                  color: Colors.white
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical:10, horizontal: 20),
+              padding: const EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white)
+              ),
+              child: const Text(
+                'Before Taking the Test',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 43,
+                  color: Colors.white
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(15),
+              child: const Text(
+                '1. Remove any glasses with colored lenses', 
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 23,
+                  color: Colors.white
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal:20),
+              child: const Text(
+                '2. Turn up your screen brightness',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 23,
+                  color: Colors.white
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: const Text(
+                '3. Make sure that you are in a well-lit environment',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 23,
+                  color: Colors.white
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 60,
+              width: 150,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.pink[300]!),
+                    textStyle: MaterialStateProperty.all(
+                        const TextStyle(fontSize: 30))),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Ishihara()),
+                    );
+                }, 
+                child: const Text(
+                  'Proceed',
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
+                )
+              ),
+            ),
+            const SizedBox(height: 30),
+          ]),
+        )
+      ),
     );
   }
 }

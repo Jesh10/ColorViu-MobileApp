@@ -43,12 +43,10 @@ class CDT extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Container(
-            height: 900,
-            width: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/background.jpg"),
-                  fit: BoxFit.cover),
+                image: AssetImage("assets/background.jpg"),
+                fit: BoxFit.cover),
             ),
             child: Column(
               children: [
@@ -126,7 +124,7 @@ class CDT extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                             child: Text(
-                              'The D15 set is a modification of the well-known FarnsworthMunsell 100 Hue Test. \n \n'
+                              'The D15 set is a modification of the well-known Farnsworth Munsell 100 Hue Test. \n \n'
                               'Each D15 set contains a reference disc and fifteen numbered discs, which make up an incomplete color circle.',
                               style: TextStyle(color: Colors.black.withOpacity(0.6)),
                             ),
@@ -135,7 +133,8 @@ class CDT extends StatelessWidget {
                       ),
                     ),
                   )
-                )
+                ),
+                const SizedBox(height: 15),
               ],
             )
           ),

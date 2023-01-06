@@ -15,12 +15,12 @@ class QuestionWidget extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+        padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
         child: Text(
             'Question ${indexAction + 1}/$totalQuestions',
             style: const TextStyle(
-              fontSize: 27,
-              color:null,
+              fontSize: 30,
+              color: Colors.white
             ), 
           ),
       ),

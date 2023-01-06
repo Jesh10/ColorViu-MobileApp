@@ -183,50 +183,57 @@ class _D15State extends State<D15> {
           //   label: Text('settings'))
         ],
       ),
-      body: DragAndDropGridView(
-        controller: _scrollController,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          childAspectRatio: 4 / 4,
-        ),
-        padding: const EdgeInsets.fromLTRB(187, 15, 160, 0),
-        itemBuilder: (context, index) => Card(
-          elevation: 2,
-          child: LayoutBuilder(
-            builder: (context, constrains) {
-              if (variableSet == 0) {
-                height = constrains.maxHeight;
-                width = constrains.maxWidth;
-                variableSet++;
-              }
-              return GridTile(
-                child: Image(
-                  image: AssetImage(colorsShuffle[index]),
-                  fit: BoxFit.cover,
-                  height: 40,
-                  width: 40,
-                ),
-              );
-            },
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/white.webp"),
+              fit: BoxFit.cover),
           ),
-        ),
-        itemCount: colorsList.length,
-        onWillAccept: (oldIndex, newIndex) {
-          if (colorsShuffle[oldIndex] == "assets/#3781C1.png" ||
-              colorsShuffle[newIndex] == "assets/#3781C1.png" ||
-              colorsShuffle[oldIndex] == "assets/#8F6FA4.png" ||
-              colorsShuffle[newIndex] == "assets/#8F6FA4.png") {
-            return false;
-          }
-          return true;
-        },
-        onReorder: (oldIndex, newIndex) {
-          final tempColor = colorsShuffle[oldIndex];
-          colorsShuffle[oldIndex] = colorsShuffle[newIndex];
-          colorsShuffle[newIndex] = tempColor;
+        child: DragAndDropGridView(
+          controller: _scrollController,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+            childAspectRatio: 4 / 4,
+          ),
+          padding: const EdgeInsets.fromLTRB(187, 15, 160, 0),
+          itemBuilder: (context, index) => Card(
+            elevation: 2,
+            child: LayoutBuilder(
+              builder: (context, constrains) {
+                if (variableSet == 0) {
+                  height = constrains.maxHeight;
+                  width = constrains.maxWidth;
+                  variableSet++;
+                }
+                return GridTile(
+                  child: Image(
+                    image: AssetImage(colorsShuffle[index]),
+                    fit: BoxFit.cover,
+                    height: 40,
+                    width: 40,
+                  ),
+                );
+              },
+            ),
+          ),
+          itemCount: colorsList.length,
+          onWillAccept: (oldIndex, newIndex) {
+            if (colorsShuffle[oldIndex] == "assets/#3781C1.png" ||
+                colorsShuffle[newIndex] == "assets/#3781C1.png" ||
+                colorsShuffle[oldIndex] == "assets/#8F6FA4.png" ||
+                colorsShuffle[newIndex] == "assets/#8F6FA4.png") {
+              return false;
+            }
+            return true;
+          },
+          onReorder: (oldIndex, newIndex) {
+            final tempColor = colorsShuffle[oldIndex];
+            colorsShuffle[oldIndex] = colorsShuffle[newIndex];
+            colorsShuffle[newIndex] = tempColor;
 
-          setState(() {});
-        },
+            setState(() {});
+          },
+        ),
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -326,7 +333,13 @@ class _d15ResultState extends State<d15Result> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Padding(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/white.webp"),
+              fit: BoxFit.cover),
+          ),
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
@@ -344,8 +357,7 @@ class _d15ResultState extends State<d15Result> {
                 ),
                 const SizedBox(height: 30),
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 2),
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 2),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.black, width: 2),
@@ -374,6 +386,7 @@ class _d15ResultState extends State<d15Result> {
                 ),
               ],
             )),
+        )
       ),
     );
   }

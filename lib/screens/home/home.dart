@@ -1,3 +1,4 @@
+import 'package:colorviu/more/more.dart';
 import 'package:colorviu/results/retrieveResults.dart';
 //import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/tests/cdt.dart';
@@ -16,6 +17,7 @@ class _HomeState extends State<Home> {
   final screens = [
     CDT(),
     retrieveResults(),
+    More(),
   ];
   @override
   Widget build(BuildContext context) {
