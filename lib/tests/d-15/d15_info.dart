@@ -35,7 +35,7 @@ class _InfoD15State extends State<InfoD15> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/white.webp"),
+              image: AssetImage("assets/white.jpg"),
               fit: BoxFit.cover),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -60,7 +60,8 @@ class _InfoD15State extends State<InfoD15> {
               child: const Text(
                 'You will be shown a row of colored boxes which have to be arranged in the correct order. \n \n' 
                 'The colored boxes on the extreme left and right sides of the row has been done for you as a reference. \n \n'
-                'Based on the the order of the colored boxes, the type of your color blindness and as well its severity can be calculated.',
+                'Long press and drag on the colored boxes to switch the order of the boxes',
+                //'Based on the the order of the colored boxes, the type of your color blindness and as well as its severity can be calculated.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 23

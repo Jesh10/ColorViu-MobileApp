@@ -10,13 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 final AuthService _auth = AuthService();
-List indexList = [];
+
 List entriesX = [];
 List entriesY = [];
-List increments = [];
-List pro = [];
-List deu = [];
-List tri = [];
 
 String deficiency = '';
 String severity = '';
@@ -33,6 +29,11 @@ class D15 extends StatefulWidget {
 class _D15State extends State<D15> {
   List colorsOld = [];
   List colorsShuffle = [];
+  List indexList = [];
+  List increments = [];
+  List pro = [];
+  List deu = [];
+  List tri = [];
 
   Map<int, String> colorsList = {
     0: 'assets/#3781C1.png',
@@ -66,16 +67,22 @@ class _D15State extends State<D15> {
   }
 
   void submit() {
-    for (var i = 0; i < colorsList.length; i++) {
-      var key = colorsList.keys
-          .firstWhere((element) => colorsList[element] == colorsShuffle[i]);
-      indexList.add(key);
+    void entries() {
+      for (var i = 0; i < colorsList.length; i++) {
+        var key = colorsList.keys
+            .firstWhere((element) => colorsList[element] == colorsShuffle[i]);
+        indexList.add(key);
+      }
+      print(indexList);
+
+      for (int i = 0; i < 15; i++) {
+        entriesX.add(coordinates[indexList[i]].x);
+        entriesY.add(coordinates[indexList[i]].y);
+      }
+      print(entriesX);
     }
 
-    for (int i = 0; i < 15; i++) {
-      entriesX.add(coordinates[indexList[i]].x);
-      entriesY.add(coordinates[indexList[i]].y);
-    }
+    entries();
 
     void gradient() {
       double pdient = 3;
@@ -143,10 +150,10 @@ class _D15State extends State<D15> {
 
     gradient();
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const d15Result()),
-    );
+    indexList = [];
+    //entriesX = [];
+
+    Navigator.pushNamed(context, '/d15');
   }
 
   int variableSet = 0;
@@ -184,11 +191,11 @@ class _D15State extends State<D15> {
         ],
       ),
       body: Container(
+        height: 900,
         decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/white.webp"),
-              fit: BoxFit.cover),
-          ),
+          image: DecorationImage(
+              image: AssetImage("assets/white.jpg"), fit: BoxFit.cover),
+        ),
         child: DragAndDropGridView(
           controller: _scrollController,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -306,6 +313,8 @@ class _d15ResultState extends State<d15Result> {
   void save() {
     var datetime = DateTime.now();
     datetime.toString();
+    entriesX = [];
+    entriesY = [];
     DatabaseService(uid: userid).createResult(
         userid, 'D-15 Arrangement Test', deficiency, severity, datetime);
     Navigator.pushNamed(context, '/');
@@ -326,20 +335,16 @@ class _d15ResultState extends State<d15Result> {
               onPressed: () async {
                 await _auth.signOut();
               }),
-          // TextButton.icon(
-          //   onPressed: () => _showSettingsPanel(),
-          //   icon: Icon(Icons.settings),
-          //   label: Text('settings'))
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/white.webp"),
-              fit: BoxFit.cover),
-          ),
-          child: Padding(
+          child: Container(
+        height: 900,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/white.jpg"), fit: BoxFit.cover),
+        ),
+        child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
@@ -357,7 +362,8 @@ class _d15ResultState extends State<d15Result> {
                 ),
                 const SizedBox(height: 30),
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 2),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 2),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.black, width: 2),
@@ -386,8 +392,7 @@ class _d15ResultState extends State<d15Result> {
                 ),
               ],
             )),
-        )
-      ),
+      )),
     );
   }
 }
@@ -436,6 +441,7 @@ class ShapesPainter extends CustomPainter {
     compare();
 
     void connect() {
+      print(entriesX);
       canvas.drawLine(const Offset(100, 0), const Offset(200, 400), protan);
       canvas.drawLine(const Offset(200, 0), const Offset(100, 400), deutan);
       canvas.drawLine(const Offset(0, 210), const Offset(360, 156), tritan);
@@ -447,7 +453,10 @@ class ShapesPainter extends CustomPainter {
 
     connect();
   }
+  
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
 }

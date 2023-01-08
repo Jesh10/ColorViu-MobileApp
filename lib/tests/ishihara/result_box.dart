@@ -29,7 +29,7 @@ class ResultBox extends StatelessWidget {
               const SizedBox(height: 20),
               Text(
                 deficiency,
-                style: const TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: Colors.white, fontSize: 43, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),

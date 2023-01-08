@@ -93,7 +93,7 @@ class _IshiharaState extends State<Ishihara> {
     Question(
       id: 16,
       question: 'assets/i_6.png',
-      answer: 5,
+      answer: 3,
     ),
   ]..shuffle();
 
@@ -191,6 +191,7 @@ class _IshiharaState extends State<Ishihara> {
       score++;
     } else {
       wrong.add(_questions[index].id);
+      print(wrong);
     }
     setState(() {
       isPressed = true;
@@ -235,69 +236,67 @@ class _IshiharaState extends State<Ishihara> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/dark.jpg"),
-              fit: BoxFit.cover),
-          ),
-          height: 900,
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Column(children: [
-            const SizedBox(height: 10),
-            QuestionWidget(indexAction: index, totalQuestions: _questions.length),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  child: LinearProgressIndicator(
-                    backgroundColor: Colors.red,
-                    valueColor: const AlwaysStoppedAnimation(Colors.green),
-                    value: progress,
-                    minHeight: 25,
-                  ),
+          child: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/dark.jpg"), fit: BoxFit.cover),
+        ),
+        height: 900,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(children: [
+          const SizedBox(height: 10),
+          QuestionWidget(indexAction: index, totalQuestions: _questions.length),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                child: LinearProgressIndicator(
+                  backgroundColor: Colors.red,
+                  valueColor: const AlwaysStoppedAnimation(Colors.green),
+                  value: progress,
+                  minHeight: 25,
                 ),
               ),
             ),
-            const Divider(color: null),
-            Image(
-              image: AssetImage(_questions[index].question),
+          ),
+          const Divider(color: null),
+          Image(
+            image: AssetImage(_questions[index].question),
+          ),
+          const Divider(color: null),
+          const SizedBox(height: 20),
+          Slider(
+            activeColor: Colors.white,
+            inactiveColor: Colors.grey,
+            value: (_currentOption).toDouble(),
+            min: 0,
+            max: 9,
+            divisions: 9,
+            label: _currentOption.round().toString(),
+            onChanged: (val) => setState(() => _currentOption = val.round()),
+          ),
+          const SizedBox(height: 30),
+          SizedBox(
+            height: 70,
+            width: 150,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.pink[400]!),
+                  textStyle: MaterialStateProperty.all(
+                      const TextStyle(color: Colors.white, fontSize: 35))),
+              onPressed: () async {
+                setState(() {
+                  checkAnswerAndUpdate(_currentOption);
+                });
+              },
+              child: const Text('Next'),
             ),
-            const Divider(color: null),
-            const SizedBox(height: 20),
-            Slider(
-              activeColor: Colors.white,
-              inactiveColor: Colors.grey,
-              value: (_currentOption).toDouble(),
-              min: 0,
-              max: 9,
-              divisions: 9,
-              label: _currentOption.round().toString(),
-              onChanged: (val) => setState(() => _currentOption = val.round()),
-            ),
-            const SizedBox(height: 30),
-            SizedBox(
-              height: 70,
-              width: 150,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.pink[400]!),
-                    textStyle: MaterialStateProperty.all(
-                        const TextStyle(color: Colors.white, fontSize: 35))),
-                onPressed: () async {
-                  setState(() {
-                    checkAnswerAndUpdate(_currentOption);
-                  });
-                },
-                child: const Text('Next'),
-              ),
-            ),
-          ]),
-        )
-      ),
+          ),
+        ]),
+      )),
     );
   }
 }
