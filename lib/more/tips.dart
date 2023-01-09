@@ -48,15 +48,16 @@ class Tips extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Divider(color: Color.fromARGB(255, 122, 120, 120)),
-              SizedBox(height: 5),
+              SizedBox(height: 10),
               Image(
                 image: AssetImage("assets/graph.webp"),
-                width: 270,
+                width: 350,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               Text(
                 "The ability to distinguish between light that is constituted of different wavelengths (i.e., different spectral power distributions) regardless of light intensity \n \n"
-                'There are also two types of Tritan Color Deficiencies, Tritanomaly and Tritanopia.',
+                'The process starts with the differential stimulation of several types of photoreceptors called cones by light entering the eye \n \n'
+                'These cones then provide outputs that eventually reach the brain after travelling through numerous layers of neurons',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
@@ -64,18 +65,16 @@ class Tips extends StatelessWidget {
               ),
               SizedBox(height: 30),
               Text(
-                'Tritanomaly',
+                'Color Vision Problem In Japan',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 45,
+                  fontSize: 40,
                   decoration: TextDecoration.underline
                 ),
               ),
               SizedBox(height: 20),
               Text(
-                'Tritanomaly is a partially severe color deficiency \n \n' 
-                'The Color Blind person who has this condition is unable to distinguish the difference between the colors Blue and Yellow \n \n'
-                "However, this condition is only partially severe as the blue cones in the person's eyes are present, but they have abnormalitites which makes the person perceive the world in more Red, Black and White",
+                'There are issues with color vision in Japanese society as a whole, Japanese physicians, and Japanese ophthalmologists because they lack awareness of color vision in general',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
@@ -83,18 +82,18 @@ class Tips extends StatelessWidget {
               ),
               SizedBox(height: 30),
               Text(
-                'Tritanopia',
+                'Color Vision Tips',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 45,
+                  fontSize: 40,
                   decoration: TextDecoration.underline
                 ),
               ),
               SizedBox(height: 20),
               Text(
-                'Tritanopia is a severe color deficiency \n \n'
-                'The Color Blind person who has this condition is also unable to distinguish the difference between the colors Blue and Yellow \n \n'
-                "However, this condition is severe as the person's eyes are missing the blue cones completely, leaving only the cones that absorb Red and Green light",
+                '1. Book appointments with Eye Doctors to diagnose your condition \n \n'
+                '2. Have regular visits to your healthcare provider \n \n'
+                "3. Keep a healthy lifestyle (ie., Exercise, Good Diet)",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,

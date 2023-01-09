@@ -19,7 +19,7 @@ class About extends StatelessWidget {
         actions: [
           ElevatedButton.icon(
               icon: const Icon(Icons.person),
-              label: const Text('logout'),
+              label: const Text('Logout'),
               onPressed: () async {
                 await _auth.signOut();
               }),
@@ -27,25 +27,63 @@ class About extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        // ignore: prefer_const_literals_to_create_immutables
-        child: Column(children: [
-          const SizedBox(height: 10),
-          const Text(
-            'What this Test is About',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 45,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/background.jpg"),
+                fit: BoxFit.cover),
             ),
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          // ignore: prefer_const_literals_to_create_immutables
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(children: const [
+              SizedBox(height: 15),
+              Text(
+                'What Is ColorViu?',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 50,
+                ),
+              ),
+              SizedBox(height: 5),
+              Divider(color: Color.fromARGB(255, 122, 120, 120)),
+              SizedBox(height: 10),
+              Image(
+                image: AssetImage("assets/colorviu.jpg"),
+                width: 350,
+              ),
+              SizedBox(height: 15),
+              Text(
+                "ColorViu is a Color Vision Testing platform that has the vision to improve the lives of anyone with Color Deficiencies \n \n"
+                'Those who might not know if they are Color Deficient can use our easy-to-do Color Vision Tests (ie., Ishihara & D-15) to find out \n \n'
+                'ColorViu also provides users with a Results page to view their completed Tests \n \n',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              Text(
+                'Contact Us',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  decoration: TextDecoration.underline
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Email: jeshcolorviu@gmail.com',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              SizedBox(height: 60),
+            ]),
           ),
-          const Divider(color: null),
-          const Image(
-            image: AssetImage("assets/ishihara.jpeg"),
-          ),
-          const SizedBox(height: 20),
-        ]),
-      )),
+        )
+      ),
     );
   }
 }
