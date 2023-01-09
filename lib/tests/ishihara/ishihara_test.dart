@@ -191,7 +191,6 @@ class _IshiharaState extends State<Ishihara> {
       score++;
     } else {
       wrong.add(_questions[index].id);
-      print(wrong);
     }
     setState(() {
       isPressed = true;

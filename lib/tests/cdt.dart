@@ -68,17 +68,16 @@ class CDT extends StatelessWidget {
                           const ListTile(
                             title: Text(
                               'Ishihara Test',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 35
                               ),
                             ),
-                            // subtitle: Text(
-                            //   '5 mins',
-                            //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                            // ),
                           ),
-                          const SizedBox(height: 10),
-                          const Image(image: AssetImage('assets/ishihara.jpeg')),
+                          const Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Image(image: AssetImage('assets/ishihara.jpeg')),
+                          ),
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Text(
@@ -93,36 +92,38 @@ class CDT extends StatelessWidget {
                     ),
                   )
                 ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const InfoD15()),
-                    );
-                  },
-                  child: Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 10),
-                        const ListTile(
-                          title: Text(
-                            'D-15 Arrangement Test',
-                            style: TextStyle(
-                              fontSize: 30
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const InfoD15()),
+                      );
+                    },
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          const ListTile(
+                            title: Text(
+                              'D-15 Arrangement Test',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 30
+                              ),
                             ),
                           ),
-                          // subtitle: Text(
-                          //   '5 mins',
-                          //   style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                          // ),
-                        ),
-                        const SizedBox(height: 15),
-                        const Image(image: AssetImage('assets/d15card.jpg')),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
+                          const SizedBox(height: 5),
+                          const Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Image(
+                              image: AssetImage('assets/d15card.jpg')
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
                             child: Text(
                               'The D15 set is a modification of the well-known Farnsworth Munsell 100 Hue Test. \n \n'
                               'Each D15 set contains a reference disc and fifteen numbered discs, which make up an incomplete color circle.',
@@ -134,7 +135,7 @@ class CDT extends StatelessWidget {
                     ),
                   )
                 ),
-                const SizedBox(height: 15),
+              const SizedBox(height: 15),
               ],
             )
           ),

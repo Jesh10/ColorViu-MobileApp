@@ -73,13 +73,11 @@ class _D15State extends State<D15> {
             .firstWhere((element) => colorsList[element] == colorsShuffle[i]);
         indexList.add(key);
       }
-      print(indexList);
 
       for (int i = 0; i < 15; i++) {
         entriesX.add(coordinates[indexList[i]].x);
         entriesY.add(coordinates[indexList[i]].y);
       }
-      print(entriesX);
     }
 
     entries();
@@ -441,7 +439,6 @@ class ShapesPainter extends CustomPainter {
     compare();
 
     void connect() {
-      print(entriesX);
       canvas.drawLine(const Offset(100, 0), const Offset(200, 400), protan);
       canvas.drawLine(const Offset(200, 0), const Offset(100, 400), deutan);
       canvas.drawLine(const Offset(0, 210), const Offset(360, 156), tritan);

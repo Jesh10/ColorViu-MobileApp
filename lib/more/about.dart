@@ -1,23 +1,18 @@
 import 'package:colorviu/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class MoreIshihara extends StatefulWidget {
-  const MoreIshihara({super.key});
+class About extends StatelessWidget {
+  About({super.key});
 
-  @override
-  State<MoreIshihara> createState() => _MoreIshiharaState();
-}
+  final AuthService _auth = AuthService();
 
-final AuthService _auth = AuthService();
-
-class _MoreIshiharaState extends State<MoreIshihara> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
-        title: const Text('Ishihara Test'),
+        title: const Text('About ColorViu'),
         backgroundColor: Colors.brown[400],
         elevation: 0,
         shadowColor: Colors.transparent,
@@ -49,7 +44,6 @@ class _MoreIshiharaState extends State<MoreIshihara> {
             image: AssetImage("assets/ishihara.jpeg"),
           ),
           const SizedBox(height: 20),
-          
         ]),
       )),
     );
