@@ -1,4 +1,4 @@
-import 'package:colorviu/screens/home/home.dart';
+import 'package:colorviu/home.dart';
 import 'package:colorviu/tests/d-15/d15_test.dart';
 import 'package:get/get.dart';
 

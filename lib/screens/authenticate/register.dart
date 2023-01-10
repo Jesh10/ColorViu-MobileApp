@@ -146,24 +146,25 @@ class _RegisterState extends State<Register> {
                       height: 50,
                       width: 120,
                       child: ElevatedButton(
-                      style: ButtonStyle(
+                        style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
                             Colors.pink[400]!),
                           textStyle: MaterialStateProperty.all(
-                            const TextStyle(color: Colors.white))),
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          setState(() => loading = true);
-                            dynamic result = await _auth.registerAccount(
-                                email, password, fullName, gender, dof);
-                            if (result == null) {
-                              setState(() {
-                                error = 'Please supply a valid Email';
-                                loading = false;
-                              });
+                            const TextStyle(color: Colors.white))
+                          ),
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() => loading = true);
+                              dynamic result = await _auth.registerAccount(
+                                  email, password, fullName, gender, dof);
+                              if (result == null) {
+                                setState(() {
+                                  error = 'Please supply a valid Email';
+                                  loading = false;
+                                });
+                              }
                             }
-                          }
-                        },
+                          },
                         child: const Text(
                           'Register',
                           style: TextStyle(
