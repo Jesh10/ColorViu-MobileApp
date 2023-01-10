@@ -38,14 +38,17 @@ class retrieveResults extends StatelessWidget {
           ],
         ),
         body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/background.jpg'),
-              fit: BoxFit.cover,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/background.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: const resultsList(),
-        ),
+            child: const Padding(
+              padding: EdgeInsets.all(10),
+              child: resultsList(),
+          )
+        )
       ),
     );
   }

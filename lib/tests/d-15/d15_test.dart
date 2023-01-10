@@ -13,6 +13,8 @@ final AuthService _auth = AuthService();
 
 List entriesX = [];
 List entriesY = [];
+List indexList = [];
+List newList = [];
 
 String deficiency = '';
 String severity = '';
@@ -29,7 +31,6 @@ class D15 extends StatefulWidget {
 class _D15State extends State<D15> {
   List colorsOld = [];
   List colorsShuffle = [];
-  List indexList = [];
   List increments = [];
   List pro = [];
   List deu = [];
@@ -59,14 +60,13 @@ class _D15State extends State<D15> {
     colorsOld = colorsList.values.toList();
     colorsShuffle = colorsList.values.toList();
     colorsShuffle.remove('assets/#3781C1.png');
-    colorsShuffle.remove('assets/#8F6FA4.png');
 
     colorsShuffle.shuffle();
     colorsShuffle.insert(0, 'assets/#3781C1.png');
-    colorsShuffle.insert(14, 'assets/#8F6FA4.png');
   }
 
   void submit() {
+
     void entries() {
       for (var i = 0; i < colorsList.length; i++) {
         var key = colorsList.keys
@@ -148,8 +148,8 @@ class _D15State extends State<D15> {
 
     gradient();
 
+    newList = indexList;
     indexList = [];
-    //entriesX = [];
 
     Navigator.pushNamed(context, '/d15');
   }
@@ -177,15 +177,12 @@ class _D15State extends State<D15> {
         elevation: 0,
         actions: [
           ElevatedButton.icon(
-              icon: const Icon(Icons.person),
-              label: const Text('Logout'),
-              onPressed: () async {
-                await _auth.signOut();
-              }),
-          // TextButton.icon(
-          //   onPressed: () => _showSettingsPanel(),
-          //   icon: Icon(Icons.settings),
-          //   label: Text('settings'))
+            icon: const Icon(Icons.person),
+            label: const Text('Logout'),
+            onPressed: () async {
+              await _auth.signOut();
+            }
+          ),
         ],
       ),
       body: Container(
@@ -224,9 +221,7 @@ class _D15State extends State<D15> {
           itemCount: colorsList.length,
           onWillAccept: (oldIndex, newIndex) {
             if (colorsShuffle[oldIndex] == "assets/#3781C1.png" ||
-                colorsShuffle[newIndex] == "assets/#3781C1.png" ||
-                colorsShuffle[oldIndex] == "assets/#8F6FA4.png" ||
-                colorsShuffle[newIndex] == "assets/#8F6FA4.png") {
+                colorsShuffle[newIndex] == "assets/#3781C1.png") {
               return false;
             }
             return true;
@@ -313,8 +308,9 @@ class _d15ResultState extends State<d15Result> {
     datetime.toString();
     entriesX = [];
     entriesY = [];
-    DatabaseService(uid: userid).createResult(
-        userid, 'D-15 Arrangement Test', deficiency, severity, datetime);
+    var newlist = newList.toString();
+    DatabaseService(uid: userid).createResult(userid, 'D-15 Arrangement Test',
+        deficiency, severity, newlist, datetime);
     Navigator.pushNamed(context, '/');
   }
 
@@ -450,7 +446,6 @@ class ShapesPainter extends CustomPainter {
 
     connect();
   }
-  
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {

@@ -120,15 +120,16 @@ class _IshiharaState extends State<Ishihara> {
     if (index == _questions.length - 1) {
       findStatement();
       showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (ctx) => ResultBox(
-                result: score,
-                questionLength: _questions.length,
-                onPressed: () => startOver(),
-                deficiency: deficiency,
-                statement: statement,
-              ));
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) => ResultBox(
+          result: score,
+          questionLength: _questions.length,
+          onPressed: () => submit(),
+          deficiency: deficiency,
+          statement: statement,
+        )
+      );
     } else {
       if (isPressed == true) {
         setState(() {
@@ -199,9 +200,10 @@ class _IshiharaState extends State<Ishihara> {
     });
   }
 
-  void startOver() {
+  void submit() {
+    String newscore = score.toString();
     DatabaseService(uid: userid).createResult(
-        userid, 'Ishihara Test', deficiency, statement, DateTime.now());
+        userid, 'Ishihara Test', deficiency, statement, newscore, DateTime.now());
     Navigator.of(context, rootNavigator: true).pop();
     Navigator.pushNamed(context, '/');
   }

@@ -1,6 +1,9 @@
 import 'package:colorviu/models/results.dart';
+import 'package:colorviu/results/showD15.dart';
+import 'package:colorviu/results/showResult.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'dart:convert';
 
 class ResultsTile extends StatelessWidget {
   final Results results;
@@ -14,7 +17,28 @@ class ResultsTile extends StatelessWidget {
           margin: const EdgeInsets.fromLTRB(20, 6, 20, 0),
           child: ListTile(
             onTap: (() {
-              print('Ishihara');
+              if (results.test == 'Ishihara Test') {
+                showDialog(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (ctx) => ShowResult(
+                          result: results.score,
+                          questionLength: 16,
+                          deficiency: results.result,
+                          statement: results.severity,
+                        ));
+              } else if (results.test == 'D-15 Arrangement Test') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ShowD15(
+                      deficiency: results.result,
+                      statement: results.severity,
+                      result: json.decode(results.score),
+                    ),
+                  )
+                );
+              }
             }),
             leading: CircleAvatar(
               radius: 25,

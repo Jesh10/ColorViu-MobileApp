@@ -20,13 +20,14 @@ class DatabaseService {
     });
   }
 
-  Future createResult(String uid, String test, String result, String severity,
+  Future createResult(String uid, String test, String result, String severity, String score,
       DateTime datetime) async {
     return await resultCollection.doc().set({
       'uid': uid,
       'test': test,
       'result': result,
       'severity': severity,
+      'score': score,
       'datetime': datetime,
     });
   }
@@ -47,6 +48,7 @@ class DatabaseService {
           test: doc.get('test') ?? '',
           result: doc.get('result') ?? '',
           severity: doc.get('severity') ?? '',
+          score: doc.get('score') ?? '',
           dateTime: doc.get('datetime') ?? ''
         );
     }).toList();
