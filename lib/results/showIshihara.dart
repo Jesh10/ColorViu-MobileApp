@@ -1,7 +1,8 @@
+import 'package:colorviu/results/home-button.dart';
 import 'package:flutter/material.dart';
 
-class ShowResult extends StatelessWidget {
-  const ShowResult({
+class ShowIshihara extends StatefulWidget {
+  const ShowIshihara({
     Key? key,
     required this.result,
     required this.questionLength,
@@ -15,6 +16,16 @@ class ShowResult extends StatelessWidget {
   final String statement;
 
   @override
+  State<ShowIshihara> createState() => _ShowIshiharaState();
+}
+
+class _ShowIshiharaState extends State<ShowIshihara> {
+  
+  void home() {
+    Navigator.pop(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.blue,
@@ -26,7 +37,7 @@ class ShowResult extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             Text(
-              deficiency,
+              widget.deficiency,
               style: const TextStyle(
                   color: Colors.white,
                   fontSize: 43,
@@ -37,7 +48,7 @@ class ShowResult extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: Text(
-                statement,
+                widget.statement,
                 style: const TextStyle(color: Colors.white, fontSize: 30),
                 textAlign: TextAlign.center,
               ),
@@ -46,13 +57,23 @@ class ShowResult extends StatelessWidget {
             CircleAvatar(
               radius: 80,
               backgroundColor:
-                  int.parse(result) < questionLength - 5 ? Colors.red : Colors.green,
+                  int.parse(widget.result) < widget.questionLength - 3 ? Colors.red : Colors.green,
               child: Text(
-                '$result/$questionLength',
+                '${widget.result}/${widget.questionLength}',
                 style: const TextStyle(fontSize: 35, color: Colors.white),
               ),
             ),
-            const SizedBox(height: 35),
+            const SizedBox(height: 25),
+            Align(
+              alignment: Alignment.bottomCenter,
+              widthFactor: 1.75,
+              child: SizedBox(
+                width: 250,
+                height: 70,
+                child: FloatingActionButton(
+                    onPressed: () {}, child: HomeButton(home: home)),
+              ),
+            ),
           ]
         ),
       ),

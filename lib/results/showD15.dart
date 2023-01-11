@@ -1,5 +1,6 @@
 import 'package:colorviu/models/coordinates.dart';
 import 'package:colorviu/models/pointers.dart';
+import 'package:colorviu/results/home-button.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -85,6 +86,10 @@ class _ShowD15State extends State<ShowD15> {
     return true;
   }
 
+  void home() {
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -98,7 +103,7 @@ class _ShowD15State extends State<ShowD15> {
             actions: [
               ElevatedButton.icon(
                   icon: const Icon(Icons.person),
-                  label: const Text('logout'),
+                  label: const Text('Logout'),
                   onPressed: () async {
                     await _auth.signOut();
                   }),
@@ -145,6 +150,19 @@ class _ShowD15State extends State<ShowD15> {
                       ),
                     ),
                     const SizedBox(height: 25),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        widthFactor: 1.75,
+                        child: SizedBox(
+                          width: 250,
+                          height: 70,
+                          child: FloatingActionButton(
+                              onPressed: () {}, child: HomeButton(home: home)),
+                        ),
+                      ),
+                    ),
                   ],
                 )),
           )),

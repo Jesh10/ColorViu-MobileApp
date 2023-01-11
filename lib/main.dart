@@ -28,17 +28,4 @@ class MyApp extends StatelessWidget {
       ),
     )
   );
-    
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return StreamProvider<MyUser?>.value(
-  //     catchError: (_, __) => null,
-  //     value: AuthService().user,
-  //     initialData: null,
-  //     child: const MaterialApp(
-  //       home: Wrapper(),
-  //     ),
-  //   );
-  // }
 }

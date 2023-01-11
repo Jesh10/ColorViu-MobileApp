@@ -1,6 +1,6 @@
 import 'package:colorviu/models/results.dart';
 import 'package:colorviu/results/showD15.dart';
-import 'package:colorviu/results/showResult.dart';
+import 'package:colorviu/results/showIshihara.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'dart:convert';
@@ -21,7 +21,7 @@ class ResultsTile extends StatelessWidget {
                 showDialog(
                     context: context,
                     barrierDismissible: true,
-                    builder: (ctx) => ShowResult(
+                    builder: (ctx) => ShowIshihara(
                           result: results.score,
                           questionLength: 16,
                           deficiency: results.result,

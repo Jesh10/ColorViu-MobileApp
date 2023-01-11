@@ -44,7 +44,7 @@ class ResultBox extends StatelessWidget {
               const SizedBox(height: 25),
               CircleAvatar(
                 radius: 80,
-                backgroundColor: result < questionLength - 5
+                backgroundColor: result < questionLength - 3
                   ? Colors.red
                   : Colors.green,
                 child: Text(
@@ -55,20 +55,16 @@ class ResultBox extends StatelessWidget {
               const SizedBox(height: 35),
               Container(
                 padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(
-                    color: Colors.blue,
-                    width: 2
-                  ),
-                  borderRadius: const BorderRadius.all(Radius.circular(15))
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(15))
                 ),
                 child: GestureDetector(
                   onTap: onPressed,
                   child: const Text(
                     'Submit Results',
                     style: TextStyle(
-                        color: Colors.blue, fontSize: 30,),
+                        color: Colors.white, fontSize: 30,),
                   )
                 ),
               ),
