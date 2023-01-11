@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:auth/auth.dart';
 import 'package:colorviu/routes/routes.dart';
@@ -51,6 +52,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
   }
 
   Future sendVerificationEmail() async {
+    
     try {
       final user = FirebaseAuth.instance.currentUser!;
       await user.sendEmailVerification();
@@ -59,61 +61,63 @@ class _VerifyEmailState extends State<VerifyEmail> {
       await Future.delayed(const Duration(seconds: 5));
       setState(() => canResendEmail = true);
     } catch (e) {
-      print(e.toString());
+      var snackbar = SnackBar(content: Text(e.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }
 
   @override
   Widget build(BuildContext context) => isEmailVerified
-    ? GetMaterialApp(getPages: Routes.routes())
-    : Scaffold(
-        backgroundColor: Colors.brown[100],
-        appBar: AppBar(
-          backgroundColor: Colors.brown[400],
-          elevation: 0,
-          title: const Text(
-            'ColorViu',
-            style: TextStyle(
-              fontSize: 25,
+      ? GetMaterialApp(getPages: Routes.routes())
+      : Scaffold(
+          backgroundColor: Colors.brown[100],
+          appBar: AppBar(
+            backgroundColor: Colors.brown[400],
+            elevation: 0,
+            title: const Text(
+              'ColorViu',
+              style: TextStyle(
+                fontSize: 25,
+              ),
             ),
           ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              const Text(
-                'A verification email has been sent to your email',
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(50)
-                ),
-                onPressed: canResendEmail ? sendVerificationEmail : null, 
-                icon: const Icon(Icons.email, size: 32), 
-                label: const Text(
-                  'Resent Verification',
-                  style: TextStyle(fontSize: 24),
-                )
-              ),
-              const SizedBox(height: 8),
-              TextButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(50),
-                ),
-                onPressed: () => FirebaseAuth.instance.signOut(), 
-                child: const Text(
-                  'Cancel',
-                  style: TextStyle(fontSize: 24, color: Colors.black),
-                )
-              )
-            ],
-          )
-        ),
-      );
+          body: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  IconButton(
+                    iconSize: 100,
+                    icon: const Icon(Icons.email_outlined), 
+                    onPressed: () {},
+                  ),
+                  const Text(
+                    'A verification email has been sent to your email',
+                    style: TextStyle(fontSize: 20),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 24),
+                  ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(50)),
+                      onPressed: canResendEmail ? sendVerificationEmail : null,
+                      icon: const Icon(Icons.email, size: 32),
+                      label: const Text(
+                        'Resent Verification',
+                        style: TextStyle(fontSize: 24),
+                      )),
+                  const SizedBox(height: 8),
+                  TextButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50),
+                      ),
+                      onPressed: () => FirebaseAuth.instance.signOut(),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(fontSize: 24, color: Colors.blue),
+                      ))
+                ],
+              )),
+        );
 }

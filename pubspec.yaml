@@ -53,6 +53,7 @@ dependencies:
   random_color_scheme: ^0.1.3
   drag_and_drop_gridview: ^1.0.8
   timeago: ^3.3.0
+  email_validator: ^2.1.17
 
 dev_dependencies:
   flutter_test:

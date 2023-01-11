@@ -1,3 +1,4 @@
+import 'package:colorviu/screens/authenticate/forgot_password.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/shared/constants.dart';
 import 'package:colorviu/shared/loading.dart';
@@ -88,35 +89,44 @@ class _SignInState extends State<SignIn> {
                       },
                     ),
                     const SizedBox(height: 30),
-                    SizedBox(
-                      height: 50,
-                      width: 120,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.pink[400]!),
-                            textStyle: MaterialStateProperty.all(
-                                const TextStyle(color: Colors.white))),
-                        onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
-                            setState(() => loading = true);
-                            dynamic result = await _auth.signInWithEmailAndPassword(
-                                email, password);
-                            if (result == null) {
-                              setState(() {
-                                error = 'Could not Sign In';
-                                loading = false;
-                              });
-                            }
+                    ElevatedButton.icon(
+                      icon: const Icon(Icons.lock_open, size: 32),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          setState(() => loading = true);
+                          dynamic result = await _auth.signInWithEmailAndPassword(
+                              email, password);
+                          if (result == null) {
+                            setState(() {
+                              error = 'Could not Sign In';
+                              loading = false;
+                            });
                           }
-                        },
-                        child: const Text(
-                          'Sign In',
-                          style: TextStyle(
-                            fontSize: 20
-                          ),
+                        }
+                      },
+                      label: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                          fontSize: 20
                         ),
                       ),
+                    ),
+                    const SizedBox(height: 24),
+                    GestureDetector(
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Theme.of(context).colorScheme.secondary,
+                          fontSize: 20
+                        ),
+                      ),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ForgotPassword()
+                      )),
                     ),
                     const SizedBox(height: 12),
                     Text(

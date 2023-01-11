@@ -60,7 +60,7 @@ class _RegisterState extends State<Register> {
       body: SingleChildScrollView( 
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
-          height: 900,
+          height: 800,
           width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -104,21 +104,32 @@ class _RegisterState extends State<Register> {
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
-                        decoration: textInputDecoration.copyWith(
-                            hintText: 'Full Name'),
-                        validator: (val) =>
-                            val!.isEmpty ? 'Enter your Name' : null,
-                        onChanged: (val) {
-                          setState(() => fullName = val);
-                        }),
+                      decoration: textInputDecoration.copyWith(
+                          hintText: 'Confirm Password'),
+                      obscureText: true,
+                      validator: (val) =>
+                          val!.isEmpty ? 'Enter your Password again' : val != password ? 'Passwords do not match' : null,
+                      ),
                     const SizedBox(height: 20),
-                    SelectFormField(
-                      type: SelectFormFieldType.dropdown,
-                      initialValue: '',
-                      labelText: 'Gender',
-                      items: genders,
-                      onChanged: (val) =>
-                          {setState(() => gender = val)},
+                    TextFormField(
+                      decoration:
+                          textInputDecoration.copyWith(hintText: 'Full Name'),
+                      validator: (val) =>
+                          val!.isEmpty ? 'Enter your Full Name' : null,
+                      onChanged: (val) {
+                        setState(() => fullName = val);
+                      }),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal:10),
+                      child: SelectFormField(
+                        type: SelectFormFieldType.dropdown,
+                        initialValue: '',
+                        labelText: 'Gender',
+                        items: genders,
+                        onChanged: (val) =>
+                            {setState(() => gender = val)},
+                      ),
                     ),
                     const SizedBox(height: 20),
                     DateTimeFormField(
@@ -142,34 +153,28 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                     const SizedBox(height: 30),
-                    SizedBox(
-                      height: 50,
-                      width: 120,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.pink[400]!),
-                          textStyle: MaterialStateProperty.all(
-                            const TextStyle(color: Colors.white))
-                          ),
-                        onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
-                            setState(() => loading = true);
-                              dynamic result = await _auth.registerAccount(
-                                  email, password, fullName, gender, dof);
-                              if (result == null) {
-                                setState(() {
-                                  error = 'Please supply a valid Email';
-                                  loading = false;
-                                });
-                              }
+                    ElevatedButton.icon(
+                      icon: const Icon(Icons.app_registration, size: 32),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          setState(() => loading = true);
+                            dynamic result = await _auth.registerAccount(
+                                email, password, fullName, gender, dof);
+                            if (result == null) {
+                              setState(() {
+                                error = 'Please supply a valid Email';
+                                loading = false;
+                              });
                             }
-                          },
-                        child: const Text(
-                          'Register',
-                          style: TextStyle(
-                            fontSize: 20
-                          ),
+                          }
+                        },
+                      label: const Text(
+                        'Register',
+                        style: TextStyle(
+                          fontSize: 20
                         ),
                       ),
                     ),
