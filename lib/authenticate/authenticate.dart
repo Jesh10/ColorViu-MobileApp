@@ -1,5 +1,5 @@
-import 'package:colorviu/screens/authenticate/register.dart';
-import 'package:colorviu/screens/authenticate/sign_in.dart';
+import 'package:colorviu/authenticate/register.dart';
+import 'package:colorviu/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
 
 class Authenticate extends StatefulWidget {

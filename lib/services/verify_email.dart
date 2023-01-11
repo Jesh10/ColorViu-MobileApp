@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:auth/auth.dart';
 import 'package:colorviu/routes/routes.dart';

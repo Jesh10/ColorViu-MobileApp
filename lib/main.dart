@@ -1,3 +1,4 @@
+import 'package:colorviu/authenticate/google.dart';
 import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,14 +17,28 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return StreamProvider<MyUser?>.value(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    create: (context) => Google(),
+    child: StreamProvider<MyUser?>.value(
       catchError: (_, __) => null,
       value: AuthService().user,
       initialData: null,
       child: const MaterialApp(
         home: Wrapper(),
       ),
-    );
-  }
+    )
+  );
+    
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return StreamProvider<MyUser?>.value(
+  //     catchError: (_, __) => null,
+  //     value: AuthService().user,
+  //     initialData: null,
+  //     child: const MaterialApp(
+  //       home: Wrapper(),
+  //     ),
+  //   );
+  // }
 }

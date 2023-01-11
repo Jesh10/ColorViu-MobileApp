@@ -52,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   const SizedBox(height: 80),
                   IconButton(
                     iconSize: 100,
-                    icon: new Icon(Icons.email_outlined), 
+                    icon: const Icon(Icons.email_outlined), 
                     onPressed: () {},
                   ),
                   const SizedBox(height: 20),

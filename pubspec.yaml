@@ -54,6 +54,8 @@ dependencies:
   drag_and_drop_gridview: ^1.0.8
   timeago: ^3.3.0
   email_validator: ^2.1.17
+  font_awesome_flutter: ^10.3.0
+  flutter_facebook_auth: ^5.0.7
 
 dev_dependencies:
   flutter_test:
