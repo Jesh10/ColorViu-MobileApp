@@ -36,7 +36,6 @@ class _VerifyEmailState extends State<VerifyEmail> {
   @override
   void dispose() {
     timer?.cancel();
-
     super.dispose();
   }
 

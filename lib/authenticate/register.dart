@@ -160,17 +160,13 @@ class _RegisterState extends State<Register> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          setState(() => loading = true);
-                            dynamic result = await _auth.registerAccount(
-                                email, password, fullName, gender, dof);
-                            if (result == null) {
-                              setState(() {
-                                error = 'Please supply a valid Email';
-                                loading = false;
-                              });
-                            }
+                          dynamic result = await _auth.registerAccount(
+                            email, password, fullName, gender, dof);
+                          if (result == null) {
+                            error = 'Please supply a valid Email';
                           }
-                        },
+                        }
+                      },
                       label: const Text(
                         'Register',
                         style: TextStyle(
