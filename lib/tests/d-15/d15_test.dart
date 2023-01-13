@@ -5,6 +5,7 @@ import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/services/database.dart';
 import 'package:colorviu/tests/d-15/save-button.dart';
 import 'package:colorviu/tests/d-15/submit_button.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:drag_and_drop_gridview/devdrag.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -141,7 +142,7 @@ class _D15State extends State<D15> {
     }
 
     gradient();
-    
+
     newList = indexList;
     indexList = [];
 
@@ -171,11 +172,12 @@ class _D15State extends State<D15> {
         elevation: 0,
         actions: [
           ElevatedButton.icon(
-              icon: const Icon(Icons.person),
-              label: const Text('Logout'),
-              onPressed: () async {
-                await _auth.signOut();
-              }),
+            icon: const Icon(Icons.person),
+            label: const Text('Logout'),
+            onPressed: () async {
+              await _auth.signOut();
+            }
+          ),
         ],
       ),
       body: Container(

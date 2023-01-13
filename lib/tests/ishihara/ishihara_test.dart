@@ -229,11 +229,12 @@ class _IshiharaState extends State<Ishihara> {
         shadowColor: Colors.transparent,
         actions: [
           ElevatedButton.icon(
-              icon: const Icon(Icons.person),
-              label: const Text('Logout'),
-              onPressed: () async {
-                await _auth.signOut();
-              }),
+            icon: const Icon(Icons.person),
+            label: const Text('Logout'),
+            onPressed: () async {
+              await _auth.signOut();
+            }
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -290,10 +291,10 @@ class _IshiharaState extends State<Ishihara> {
               width: 150,
               child: ElevatedButton(
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.pink[400]!),
-                    textStyle: MaterialStateProperty.all(
-                        const TextStyle(color: Colors.white, fontSize: 35))),
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.pink[400]!),
+                  textStyle: MaterialStateProperty.all(
+                      const TextStyle(color: Colors.white, fontSize: 35))),
                 onPressed: () async {
                   setState(() {
                     checkAnswerAndUpdate(_currentOption);

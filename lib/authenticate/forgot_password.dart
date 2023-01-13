@@ -101,9 +101,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
       // ignore: use_build_context_synchronously
       Navigator.of(context).popUntil((route) => route.isFirst);
-    } on FirebaseAuthException catch (e) {
-      print(e);
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    } on FirebaseAuthException{
       Navigator.of(context).pop();
     }
   }

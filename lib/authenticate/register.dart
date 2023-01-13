@@ -4,6 +4,7 @@ import 'package:colorviu/shared/loading.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:select_form_field/select_form_field.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 
 final List<Map<String, dynamic>> genders = [
