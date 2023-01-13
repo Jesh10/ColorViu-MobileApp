@@ -66,7 +66,6 @@ class _D15State extends State<D15> {
   }
 
   void submit() {
-
     void entries() {
       for (var i = 0; i < colorsList.length; i++) {
         var key = colorsList.keys
@@ -84,7 +83,7 @@ class _D15State extends State<D15> {
 
     void gradient() {
       double pdient = 3;
-      double ddient = -2;
+      double ddient = -1.2;
       double tdient = 0;
 
       for (var i = 0; i < 15 - 1; i++) {
@@ -109,49 +108,48 @@ class _D15State extends State<D15> {
             tri.add(grad);
           }
 
-          if (pro.length == 2 || pro.length == 3) {
-            deficiency = "Protanomaly";
-            severity = "Partially Severe Color Deficiency";
-          } else if (pro.length > 3 ||
-              pro.length > deu.length ||
-              pro.length > tri.length) {
-            deficiency = "Protanopia";
-            severity = "Severe Color Deficiency";
-          } else if (deu.length == 2 || deu.length == 3) {
-            deficiency = "Deuteranomaly";
-            severity = "Partially Severe Color Deficiency";
-          } else if (deu.length > 3 ||
-              deu.length > pro.length ||
-              deu.length > tri.length) {
-            deficiency = "Deuteranopia";
-            severity = "Severe Color Deficiency";
-          }
-
-          if (tri.length == 3 || tri.length == 4) {
-            deficiency = "Tritanomaly";
-            severity = "Partially Severe Color Deficiency";
-          } else if (tri.length > 4 ||
-              tri.length > pro.length ||
-              tri.length > deu.length) {
-            deficiency = "Tritanopia";
-            severity = "Severe Color Deficiency";
+          if(pro.length > deu.length || pro.length > tri.length){
+             if (pro.length == 2 || pro.length == 3) {
+              deficiency = "Protanomaly";
+              severity = "Partially Severe Color Deficiency";
+            } else if (pro.length > 3) {
+              deficiency = "Protanopia";
+              severity = "Severe Color Deficiency";
+            }
+          } else if(deu.length > pro.length || deu.length > tri.length) {
+            if (deu.length == 2 || deu.length == 3) {
+              deficiency = "Deuteranomaly";
+              severity = "Partially Severe Color Deficiency";
+            } else if (deu.length > 3) {
+              deficiency = "Deuteranopia";
+              severity = "Severe Color Deficiency";
+            }
+          } else if (tri.length > pro.length || tri.length > deu.length) {
+            if (tri.length == 3 || tri.length == 4) {
+              deficiency = "Tritanomaly";
+              severity = "Partially Severe Color Deficiency";
+            } else if (tri.length > 4) {
+              deficiency = "Tritanopia";
+              severity = "Severe Color Deficiency";
+            }
           }
         } else {
           deficiency = 'Trichromacy';
           severity = 'Normal Color Vision';
         }
       }
-      // print(pro);
-      // print(deu);
-      // print(tri);
     }
 
     gradient();
 
+    print(pro);
+    print(deu);
+    print(tri);
+
     newList = indexList;
     indexList = [];
 
-    Navigator.pushNamed(context, '/d15');
+    Navigator.of(context).pushNamedAndRemoveUntil('/d15', (route) => false);
   }
 
   int variableSet = 0;
@@ -177,12 +175,11 @@ class _D15State extends State<D15> {
         elevation: 0,
         actions: [
           ElevatedButton.icon(
-            icon: const Icon(Icons.person),
-            label: const Text('Logout'),
-            onPressed: () async {
-              await _auth.signOut();
-            }
-          ),
+              icon: const Icon(Icons.person),
+              label: const Text('Logout'),
+              onPressed: () async {
+                await _auth.signOut();
+              }),
         ],
       ),
       body: Container(
@@ -301,6 +298,8 @@ List<Coordinates> coordinates = [
   //Coordinates(id: 16, x: 100, y: 409)
 ];
 
+//4,15,14,5,13,6,12,7,11
+
 // ignore: camel_case_types
 class _d15ResultState extends State<d15Result> {
   void save() {
@@ -311,7 +310,7 @@ class _d15ResultState extends State<d15Result> {
     var newlist = newList.toString();
     DatabaseService(uid: userid).createResult(userid, 'D-15 Arrangement Test',
         deficiency, severity, newlist, datetime);
-    Navigator.pushNamed(context, '/');
+    Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
   }
 
   @override
