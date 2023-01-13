@@ -65,57 +65,58 @@ class _VerifyEmailState extends State<VerifyEmail> {
   }
 
   @override
-  Widget build(BuildContext context) => isEmailVerified
-      ? GetMaterialApp(getPages: Routes.routes())
-      : Scaffold(
-          backgroundColor: Colors.brown[100],
-          appBar: AppBar(
-            backgroundColor: Colors.brown[400],
-            elevation: 0,
-            title: const Text(
-              'ColorViu',
-              style: TextStyle(
-                fontSize: 25,
-              ),
-            ),
+  Widget build(BuildContext context) => isEmailVerified ? GetMaterialApp(getPages: Routes.routes()) : Scaffold(
+    backgroundColor: Colors.brown[100],
+    appBar: AppBar(
+      backgroundColor: Colors.brown[400],
+      elevation: 0,
+      title: const Text(
+        'ColorViu',
+        style: TextStyle(
+          fontSize: 25,
+        ),
+      ),
+    ),
+    body: Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // ignore: prefer_const_literals_to_create_immutables
+        children: [
+          IconButton(
+            iconSize: 100,
+            icon: const Icon(Icons.email_outlined), 
+            onPressed: () {},
           ),
-          body: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  IconButton(
-                    iconSize: 100,
-                    icon: const Icon(Icons.email_outlined), 
-                    onPressed: () {},
-                  ),
-                  const Text(
-                    'A verification email has been sent to your email',
-                    style: TextStyle(fontSize: 20),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(50)),
-                      onPressed: canResendEmail ? sendVerificationEmail : null,
-                      icon: const Icon(Icons.email, size: 32),
-                      label: const Text(
-                        'Resent Verification',
-                        style: TextStyle(fontSize: 24),
-                      )),
-                  const SizedBox(height: 8),
-                  TextButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size.fromHeight(50),
-                      ),
-                      onPressed: () => FirebaseAuth.instance.signOut(),
-                      child: const Text(
-                        'Cancel',
-                        style: TextStyle(fontSize: 24, color: Colors.blue),
-                      ))
-                ],
-              )),
-        );
+          const Text(
+            'A verification email has been sent to your email',
+            style: TextStyle(fontSize: 20),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 24),
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+                minimumSize: const Size.fromHeight(50)),
+            onPressed: canResendEmail ? sendVerificationEmail : null,
+            icon: const Icon(Icons.email, size: 32),
+            label: const Text(
+              'Resent Verification',
+              style: TextStyle(fontSize: 24),
+            )
+          ),
+          const SizedBox(height: 8),
+          TextButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: const Size.fromHeight(50),
+            ),
+            onPressed: () => FirebaseAuth.instance.signOut(),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(fontSize: 24, color: Colors.blue),
+            )
+          )
+        ],
+      )
+    ),
+  );
 }

@@ -15,7 +15,6 @@ class retrieveResults extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<List<Results>>.value(
-      //catchError: (_, __) => null,
       value: DatabaseService(uid: '').resultsData,
       initialData: const [],
       child: Scaffold(
@@ -38,15 +37,15 @@ class retrieveResults extends StatelessWidget {
           ],
         ),
         body: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/background.jpg'),
-                fit: BoxFit.cover,
-              ),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background.jpg'),
+              fit: BoxFit.cover,
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(10),
-              child: resultsList(),
+          ),
+          child: const Padding(
+            padding: EdgeInsets.all(10),
+            child: resultsList(),
           )
         )
       ),

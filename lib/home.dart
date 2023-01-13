@@ -1,6 +1,5 @@
 import 'package:colorviu/more/more.dart';
 import 'package:colorviu/results/retrieveResults.dart';
-//import 'package:colorviu/services/auth.dart';
 import 'package:colorviu/tests/cdt.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +11,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  //final AuthService _auth = AuthService();
   int index = 0;
+  
   final screens = [
     CDT(),
     retrieveResults(),
     const More(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +44,8 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.info_outline),
             selectedIcon: Icon(Icons.info), 
             label: 'More'),
-        ]),
+        ]
+      ),
     );
   }
 }

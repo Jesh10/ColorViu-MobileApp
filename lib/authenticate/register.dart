@@ -84,13 +84,14 @@ class _RegisterState extends State<Register> {
                   children: [
                     const SizedBox(height: 20),
                     TextFormField(
-                        decoration:
-                            textInputDecoration.copyWith(hintText: 'Email'),
-                        validator: (val) =>
-                            val!.isEmpty ? 'Enter an Email' : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                        }),
+                      decoration:
+                          textInputDecoration.copyWith(hintText: 'Email'),
+                      validator: (val) =>
+                          val!.isEmpty ? 'Enter an Email' : null,
+                      onChanged: (val) {
+                        setState(() => email = val);
+                      }
+                    ),
                     const SizedBox(height: 20),
                     TextFormField(
                       decoration: textInputDecoration.copyWith(
@@ -106,11 +107,11 @@ class _RegisterState extends State<Register> {
                     const SizedBox(height: 20),
                     TextFormField(
                       decoration: textInputDecoration.copyWith(
-                          hintText: 'Confirm Password'),
+                        hintText: 'Confirm Password'),
                       obscureText: true,
                       validator: (val) =>
-                          val!.isEmpty ? 'Enter your Password again' : val != password ? 'Passwords do not match' : null,
-                      ),
+                        val!.isEmpty ? 'Enter your Password again' : val != password ? 'Passwords do not match' : null,
+                    ),
                     const SizedBox(height: 20),
                     TextFormField(
                       decoration:
@@ -119,7 +120,8 @@ class _RegisterState extends State<Register> {
                           val!.isEmpty ? 'Enter your Full Name' : null,
                       onChanged: (val) {
                         setState(() => fullName = val);
-                      }),
+                      }
+                    ),
                     const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal:10),
@@ -149,7 +151,6 @@ class _RegisterState extends State<Register> {
                       onDateSelected: (DateTime val) {
                         String selectedData =
                             DateFormat('dd-MM-yyyy').format(val);
-                        //print(selectedData);
                         setState(() => dof = selectedData);
                       },
                     ),

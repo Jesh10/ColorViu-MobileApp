@@ -93,80 +93,83 @@ class _ShowD15State extends State<ShowD15> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: _onWillPop,
-        child: Scaffold(
-          backgroundColor: Colors.brown[50],
-          appBar: AppBar(
-            title: const Text('D-15 Arrangement'),
-            backgroundColor: Colors.brown[400],
-            elevation: 0,
-            actions: [
-              ElevatedButton.icon(
-                  icon: const Icon(Icons.person),
-                  label: const Text('Logout'),
-                  onPressed: () async {
-                    await _auth.signOut();
-                  }),
-            ],
-          ),
-          body: SingleChildScrollView(
-              child: Container(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        backgroundColor: Colors.brown[50],
+        appBar: AppBar(
+          title: const Text('D-15 Arrangement'),
+          backgroundColor: Colors.brown[400],
+          elevation: 0,
+          actions: [
+            ElevatedButton.icon(
+                icon: const Icon(Icons.person),
+                label: const Text('Logout'),
+                onPressed: () async {
+                  await _auth.signOut();
+                }),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Container(
             height: 900,
             decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/white.jpg"), fit: BoxFit.cover),
             ),
             child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    Text(
-                      widget.deficiency,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 50),
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  Text(
+                    widget.deficiency,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 50),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    widget.statement,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 23),
+                  ),
+                  const SizedBox(height: 30),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 2),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black, width: 2),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15)),
                     ),
-                    const SizedBox(height: 20),
-                    Text(
-                      widget.statement,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 23),
-                    ),
-                    const SizedBox(height: 30),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 2),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black, width: 2),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
-                      ),
-                      child: CustomPaint(
-                        painter: ShapesPainter(),
-                        child: Container(
-                          height: 400,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 25),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        widthFactor: 1.75,
-                        child: SizedBox(
-                          width: 250,
-                          height: 70,
-                          child: FloatingActionButton(
-                              onPressed: () {}, child: HomeButton(home: home)),
-                        ),
+                    child: CustomPaint(
+                      painter: ShapesPainter(),
+                      child: Container(
+                        height: 400,
                       ),
                     ),
-                  ],
-                )),
-          )),
-        ));
+                  ),
+                  const SizedBox(height: 25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      widthFactor: 1.75,
+                      child: SizedBox(
+                        width: 250,
+                        height: 70,
+                        child: FloatingActionButton(
+                            onPressed: () {}, child: HomeButton(home: home)),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ),
+          )
+        ),
+      )
+    );
   }
 }
 
