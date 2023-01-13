@@ -141,11 +141,7 @@ class _D15State extends State<D15> {
     }
 
     gradient();
-
-    print(pro);
-    print(deu);
-    print(tri);
-
+    
     newList = indexList;
     indexList = [];
 
@@ -298,8 +294,6 @@ List<Coordinates> coordinates = [
   //Coordinates(id: 16, x: 100, y: 409)
 ];
 
-//4,15,14,5,13,6,12,7,11
-
 // ignore: camel_case_types
 class _d15ResultState extends State<d15Result> {
   void save() {
@@ -331,13 +325,13 @@ class _d15ResultState extends State<d15Result> {
         ],
       ),
       body: SingleChildScrollView(
-          child: Container(
-        height: 900,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/white.jpg"), fit: BoxFit.cover),
-        ),
-        child: Padding(
+        child: Container(
+          height: 900,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/white.jpg"), fit: BoxFit.cover),
+          ),
+          child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
@@ -384,8 +378,10 @@ class _d15ResultState extends State<d15Result> {
                   ),
                 ),
               ],
-            )),
-      )),
+            )
+          ),
+        )
+      ),
     );
   }
 }
