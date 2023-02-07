@@ -30,15 +30,12 @@ class CDT extends StatelessWidget {
           elevation: 0,
           actions: [
             ElevatedButton.icon(
-                icon: const Icon(Icons.person),
-                label: const Text('Logout'),
-                onPressed: () async {
-                  await _auth.signOut();
-                }),
-            // TextButton.icon(
-            //   onPressed: () => _showSettingsPanel(),
-            //   icon: Icon(Icons.settings),
-            //   label: Text('settings'))
+              icon: const Icon(Icons.person),
+              label: const Text('Logout'),
+              onPressed: () async {
+                await _auth.signOut();
+              }
+            ),
           ],
         ),
         body: SingleChildScrollView(
@@ -82,11 +79,10 @@ class CDT extends StatelessWidget {
                             padding: const EdgeInsets.all(16.0),
                             child: Text(
                               'The Ishihara Test is the most well known color blindness test all around the world. \n \n' 
-                              'Ishihara was a Japanese ophthalmologist who established the Ishihara Color Vision Test to detect colour blindness in 1917.',
+                              'Ishihara was a Japanese ophthalmologist who established the Ishihara Color Vision Test to detect color blindness in 1917.',
                               style: TextStyle(color: Colors.black.withOpacity(0.6)),
                             ),
                           ),
-                          
                         ],
                       ),
                     ),
